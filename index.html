@@ -203,6 +203,13 @@ nav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.2); }
 .service-detail-title { font-family: var(--font-display); font-size: 26px; font-weight: 700; color: var(--navy); margin-bottom: 1rem; }
 .service-detail-desc { font-size: 15.5px; color: var(--text); line-height: 1.75; margin-bottom: 1rem; }
 .service-detail-placeholder { font-size: 13.5px; font-style: italic; color: var(--text-light); background: var(--cream); border-radius: 8px; padding: 0.9rem 1.1rem; }
+.service-detail-list-title { font-weight: 700; color: var(--navy); font-size: 15px; margin: 1.25rem 0 0.6rem; }
+.service-detail-list { list-style: none; margin: 0 0 1.25rem; padding: 0; }
+.service-detail-list li { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--text); margin-bottom: 0.5rem; line-height: 1.55; }
+.service-detail-list li svg { width: 16px; height: 16px; stroke: var(--gold); fill: none; stroke-width: 2.2; flex-shrink: 0; margin-top: 3px; }
+.service-detail-terms { background: var(--gold-light); border: 1px solid var(--gold-dim); border-radius: 8px; padding: 1rem 1.2rem; font-size: 13.5px; color: var(--navy); line-height: 1.6; margin-bottom: 1rem; }
+.service-detail-terms strong { color: var(--navy); }
+.service-detail-note { font-size: 12.5px; font-style: italic; color: var(--text-light); }
 .services-grid.hidden-grid { display: none; }
 .news-article-detail.open { display: block; }
 .article-back-btn { background: none; border: 1px solid rgba(12,40,79,0.2); color: var(--navy); padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; margin-bottom: 1.25rem; transition: all 0.2s; }
@@ -393,13 +400,14 @@ footer { background: var(--navy-dark); border-top: 1px solid rgba(225,195,64,0.1
       </div>
       <p class="hero-tagline">Consultanță și operațiuni la Registrul Comerțului, în română și maghiară — de la Gál Norbert, fondatorul Gál S. Norbert Întreprindere Individuală.</p>
       <div class="hero-pills">
-        <a href="#infiintare-firme" onclick="openServiceDetail('infiintare-firme');return false;" class="hero-pill">Înființări firme</a>
-        <a href="#mentiuni-onrc" onclick="openServiceDetail('mentiuni-onrc');return false;" class="hero-pill">Modificări ONRC</a>
+        <a href="#infiintare-pfa" onclick="openServiceDetail('infiintare-pfa');return false;" class="hero-pill">Înființări firme</a>
+        <a href="#mentiuni-pfa" onclick="openServiceDetail('mentiuni-pfa');return false;" class="hero-pill">Modificări ONRC</a>
         <a href="#declaratie-unica" onclick="openServiceDetail('declaratie-unica');return false;" class="hero-pill">Declarație Unică</a>
         <a href="#consultanta" onclick="openServiceDetail('consultanta');return false;" class="hero-pill">Consultanță</a>
       </div>
       <div class="hero-ctas">
         <div class="hero-ctas-row">
+          <a href="#servicii" onclick="navigateTo('servicii');return false;" class="hero-cta-secondary">Servicii</a>
           <a href="#preturi" onclick="navigateTo('preturi');return false;" class="hero-cta-secondary">Vezi prețurile</a>
           <a href="#noutati" onclick="navigateTo('noutati');return false;" class="hero-cta-secondary">Noutăți</a>
         </div>
@@ -516,13 +524,14 @@ footer { background: var(--navy-dark); border-top: 1px solid rgba(225,195,64,0.1
       </div>
       <p class="hero-tagline">Tanácsadás és Cégbírósági ügyintézés, románul és magyarul — Gál Norberttől, a Gál S. Norbert Egyéni Vállalkozás alapítójától.</p>
       <div class="hero-pills">
-        <a href="#cegalapitas" onclick="openServiceDetail('cegalapitas');return false;" class="hero-pill">Cégalapítás</a>
-        <a href="#onrc-bejegyzes" onclick="openServiceDetail('onrc-bejegyzes');return false;" class="hero-pill">ONRC módosítások</a>
+        <a href="#cegalapitas-ev" onclick="openServiceDetail('cegalapitas-ev');return false;" class="hero-pill">Cégalapítás</a>
+        <a href="#onrc-bejegyzes-ev" onclick="openServiceDetail('onrc-bejegyzes-ev');return false;" class="hero-pill">ONRC módosítások</a>
         <a href="#adobevallas" onclick="openServiceDetail('adobevallas');return false;" class="hero-pill">Egységes Nyilatkozat</a>
         <a href="#tanacsadas" onclick="openServiceDetail('tanacsadas');return false;" class="hero-pill">Tanácsadás</a>
       </div>
       <div class="hero-ctas">
         <div class="hero-ctas-row">
+          <a href="#szolgaltatasok" onclick="navigateTo('servicii');return false;" class="hero-cta-secondary">Szolgáltatások</a>
           <a href="#preturi" onclick="navigateTo('preturi');return false;" class="hero-cta-secondary">Árak megtekintése</a>
           <a href="#noutati" onclick="navigateTo('noutati');return false;" class="hero-cta-secondary">Hírek</a>
         </div>
@@ -623,22 +632,52 @@ footer { background: var(--navy-dark); border-top: 1px solid rgba(225,195,64,0.1
     <h2 class="section-title">Servicii profesionale</h2>
     <p class="section-subtitle">Consultanță și operațiuni la Registrul Comerțului</p>
     <div class="services-grid">
-      <div class="service-card service-card-clickable" id="infiintare-firme" onclick="openServiceDetail('infiintare-firme')" tabindex="0" role="button">
+      <div class="service-card service-card-clickable" id="infiintare-pfa" onclick="openServiceDetail('infiintare-pfa')" tabindex="0" role="button">
         <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-        <div class="service-name">Înființare firme</div>
-        <p class="service-desc">Asist în procesul de înregistrare a unei noi firme la Registrul Comerțului — SRL, PFA, II, IF și alte forme juridice.</p>
+        <div class="service-name">Înființare PFA / Î.I. / Î.F.</div>
+        <p class="service-desc">Înregistrarea unei Persoane Fizice Autorizate, Întreprinderi Individuale sau Familiale la Registrul Comerțului.</p>
         <span class="service-more">Detalii →</span>
       </div>
-      <div class="service-card service-card-clickable" id="modificari-firme" onclick="openServiceDetail('modificari-firme')" tabindex="0" role="button">
+      <div class="service-card service-card-clickable" id="infiintare-srl" onclick="openServiceDetail('infiintare-srl')" tabindex="0" role="button">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <div class="service-name">Înființare SRL</div>
+        <p class="service-desc">Înregistrarea unei Societăți cu Răspundere Limitată la Registrul Comerțului.</p>
+        <span class="service-more">Detalii →</span>
+      </div>
+      <div class="service-card service-card-clickable" id="modificari-pfa" onclick="openServiceDetail('modificari-pfa')" tabindex="0" role="button">
         <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
-        <div class="service-name">Modificări firme</div>
-        <p class="service-desc">Procesez orice modificare a datelor firmei: schimbare sediu, administrator, obiect de activitate, capital social și altele.</p>
+        <div class="service-name">Modificări PFA / Î.I. / Î.F.</div>
+        <p class="service-desc">Modificarea sediului, obiectului de activitate sau altor date ale unei PFA, Î.I. sau Î.F.</p>
         <span class="service-more">Detalii →</span>
       </div>
-      <div class="service-card service-card-clickable" id="mentiuni-onrc" onclick="openServiceDetail('mentiuni-onrc')" tabindex="0" role="button">
+      <div class="service-card service-card-clickable" id="modificari-srl" onclick="openServiceDetail('modificari-srl')" tabindex="0" role="button">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
+        <div class="service-name">Modificări SRL</div>
+        <p class="service-desc">Modificarea sediului, administratorului, obiectului de activitate sau capitalului social al unui SRL.</p>
+        <span class="service-more">Detalii →</span>
+      </div>
+      <div class="service-card service-card-clickable" id="mentiuni-pfa" onclick="openServiceDetail('mentiuni-pfa')" tabindex="0" role="button">
         <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-        <div class="service-name">Mențiuni ONRC</div>
-        <p class="service-desc">Depun și urmăresc toate tipurile de mențiuni la Oficiul Registrului Comerțului, inclusiv online prin portalul ONRC.</p>
+        <div class="service-name">Mențiuni ONRC — PFA / Î.I. / Î.F.</div>
+        <p class="service-desc">Suspendare, reluare activitate și alte mențiuni pentru PFA, Î.I. sau Î.F.</p>
+        <span class="service-more">Detalii →</span>
+      </div>
+      <div class="service-card service-card-clickable" id="mentiuni-srl" onclick="openServiceDetail('mentiuni-srl')" tabindex="0" role="button">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        <div class="service-name">Mențiuni ONRC — SRL</div>
+        <p class="service-desc">Suspendare, reluare activitate, radiere punct de lucru și alte mențiuni pentru SRL.</p>
+        <span class="service-more">Detalii →</span>
+      </div>
+      <div class="service-card service-card-clickable" id="radiere-pfa" onclick="openServiceDetail('radiere-pfa')" tabindex="0" role="button">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <div class="service-name">Radiere PFA / Î.I. / Î.F.</div>
+        <p class="service-desc">Închiderea unei PFA, Î.I. sau Î.F. — procedură simplă, fără dizolvare și lichidare.</p>
+        <span class="service-more">Detalii →</span>
+      </div>
+      <div class="service-card service-card-clickable" id="radiere-srl" onclick="openServiceDetail('radiere-srl')" tabindex="0" role="button">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <div class="service-name">Radiere SRL</div>
+        <p class="service-desc">Dizolvarea, lichidarea și radierea unui SRL din Registrul Comerțului.</p>
         <span class="service-more">Detalii →</span>
       </div>
       <div class="service-card service-card-clickable" id="consultanta" onclick="openServiceDetail('consultanta')" tabindex="0" role="button">
@@ -653,49 +692,162 @@ footer { background: var(--navy-dark); border-top: 1px solid rgba(225,195,64,0.1
         <p class="service-desc">Asist persoanele fizice în completarea și depunerea Declarației Unice privind impozitul pe venit și contribuțiile sociale.</p>
         <span class="service-more">Detalii →</span>
       </div>
-      <div class="service-card service-card-clickable" id="radiere-firme" onclick="openServiceDetail('radiere-firme')" tabindex="0" role="button">
-        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
-        <div class="service-name">Radiere firme</div>
-        <p class="service-desc">Gestionez întregul proces de radiere a firmei din Registrul Comerțului, inclusiv lichidarea voluntară și dizolvarea.</p>
-        <span class="service-more">Detalii →</span>
-      </div>
     </div>
-    <div class="service-detail-view" id="detail-infiintare-firme">
+    </div>
+    <div class="service-detail-view" id="detail-infiintare-pfa">
       <button class="article-back-btn" onclick="closeServiceDetail()">← Înapoi la servicii</button>
       <div class="service-detail-card">
         <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-        <h3 class="service-detail-title">Înființare firme</h3>
-        <p class="service-detail-desc">Asist în procesul de înregistrare a unei noi firme la Registrul Comerțului — SRL, PFA, II, IF și alte forme juridice.</p>
-        <p class="service-detail-placeholder">Descriere detaliată în curs de completare — reveniți curând pentru informații extinse despre acest serviciu (etape, documente necesare, durată estimată).</p>
+        <h3 class="service-detail-title">Înființare PFA / Î.I. / Î.F.</h3>
+        <p class="service-detail-desc">Înființarea unei PFA, Întreprinderi Individuale (Î.I.) sau Întreprinderi Familiale (Î.F.) este soluția potrivită pentru activități desfășurate de o singură persoană sau de o familie, cu formalități mai simple decât la o societate comercială. Mă ocup de rezervarea denumirii, alegerea codurilor CAEN potrivite și depunerea completă a dosarului la Registrul Comerțului.</p>
+        <div class="service-detail-list-title">Acte necesare, de regulă:</div>
+        <ul class="service-detail-list">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Carte de identitate a titularului</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Dovada sediului profesional — contract de comodat sau închiriere, cu copia actului de proprietate; acordul asociației de proprietari, dacă activitatea se desfășoară într-un apartament</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Dovada calificării sau experienței profesionale în activitatea aleasă (pentru PFA)</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Cererea de verificare și rezervare denumire, urmată de cererea de înregistrare</li>
+        </ul>
+        <div class="service-detail-terms">⏱ <strong>Termene legale ONRC:</strong> cererea se soluționează în <strong>1 zi lucrătoare</strong> de la depunere, iar documentele se eliberează în încă <strong>2 zile lucrătoare de la soluționare</strong> (3 zile lucrătoare în total). Aceste termene sunt stabilite de Registrul Comerțului — pot apărea întârzieri din partea ONRC, independent de mine, mai ales în perioadele aglomerate.</div>
+        
         <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:1.5rem;">
           <a href="#contact" class="hero-cta" onclick="navigateTo('home','contact')">Solicită acest serviciu</a>
-          <button class="hero-cta-secondary article-copy-btn" onclick="copyLink('infiintare-firme', this)">🔗 Copiază linkul</button>
         </div>
       </div>
     </div>
-    <div class="service-detail-view" id="detail-modificari-firme">
+    <div class="service-detail-view" id="detail-infiintare-srl">
+      <button class="article-back-btn" onclick="closeServiceDetail()">← Înapoi la servicii</button>
+      <div class="service-detail-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <h3 class="service-detail-title">Înființare SRL</h3>
+        <p class="service-detail-desc">Înființarea unui SRL presupune redactarea actului constitutiv, stabilirea capitalului social și a codurilor CAEN, și un dosar ceva mai amplu decât la PFA. Te ajut cu întregul proces, de la rezervarea denumirii până la ridicarea certificatului de înregistrare.</p>
+        <div class="service-detail-list-title">Acte necesare, de regulă:</div>
+        <ul class="service-detail-list">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Cărțile de identitate ale asociaților și administratorului</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Dovada sediului social — contract de comodat sau închiriere, cu copia actului de proprietate; acordul asociației de proprietari, dacă e cazul</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Actul constitutiv al societății</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Declarația privind beneficiarul real</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Dovada capitalului social depus într-un cont bancar</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Cererea de verificare și rezervare denumire, urmată de cererea de înregistrare</li>
+        </ul>
+        <div class="service-detail-terms">⏱ <strong>Termene legale ONRC:</strong> cererea se soluționează în <strong>1 zi lucrătoare</strong> de la depunere, iar documentele se eliberează în încă <strong>2 zile lucrătoare de la soluționare</strong> (3 zile lucrătoare în total). Aceste termene sunt stabilite de Registrul Comerțului — pot apărea întârzieri din partea ONRC, independent de mine, mai ales în perioadele aglomerate.</div>
+        
+        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:1.5rem;">
+          <a href="#contact" class="hero-cta" onclick="navigateTo('home','contact')">Solicită acest serviciu</a>
+        </div>
+      </div>
+    </div>
+    <div class="service-detail-view" id="detail-modificari-pfa">
       <button class="article-back-btn" onclick="closeServiceDetail()">← Înapoi la servicii</button>
       <div class="service-detail-card">
         <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
-        <h3 class="service-detail-title">Modificări firme</h3>
-        <p class="service-detail-desc">Procesez orice modificare a datelor firmei: schimbare sediu, administrator, obiect de activitate, capital social și altele.</p>
-        <p class="service-detail-placeholder">Descriere detaliată în curs de completare — reveniți curând pentru informații extinse despre acest serviciu (etape, documente necesare, durată estimată).</p>
+        <h3 class="service-detail-title">Modificări PFA / Î.I. / Î.F.</h3>
+        <p class="service-detail-desc">Orice schimbare privind sediul profesional, codurile CAEN sau alte date ale unei PFA, Întreprinderi Individuale sau Familiale trebuie înregistrată printr-o mențiune la Registrul Comerțului. Pregătesc documentele corespunzătoare și depun dosarul complet.</p>
+        <div class="service-detail-list-title">Acte necesare, de regulă:</div>
+        <ul class="service-detail-list">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Cererea-tip de mențiuni pentru persoane fizice</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Actul doveditor al modificării (de exemplu, noul contract de sediu)</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Carte de identitate a titularului</li>
+        </ul>
+        <div class="service-detail-terms">⏱ <strong>Termene legale ONRC:</strong> cererea se soluționează în <strong>1 zi lucrătoare</strong> de la depunere, iar documentele se eliberează în încă <strong>2 zile lucrătoare de la soluționare</strong> (3 zile lucrătoare în total). Aceste termene sunt stabilite de Registrul Comerțului — pot apărea întârzieri din partea ONRC, independent de mine, mai ales în perioadele aglomerate.</div>
+        
         <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:1.5rem;">
           <a href="#contact" class="hero-cta" onclick="navigateTo('home','contact')">Solicită acest serviciu</a>
-          <button class="hero-cta-secondary article-copy-btn" onclick="copyLink('modificari-firme', this)">🔗 Copiază linkul</button>
         </div>
       </div>
     </div>
-    <div class="service-detail-view" id="detail-mentiuni-onrc">
+    <div class="service-detail-view" id="detail-modificari-srl">
+      <button class="article-back-btn" onclick="closeServiceDetail()">← Înapoi la servicii</button>
+      <div class="service-detail-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
+        <h3 class="service-detail-title">Modificări SRL</h3>
+        <p class="service-detail-desc">Schimbarea sediului social, a administratorului, a obiectului de activitate, a capitalului social sau a altor date ale unui SRL se înregistrează printr-o mențiune la Registrul Comerțului, pe baza hotărârii asociaților.</p>
+        <div class="service-detail-list-title">Acte necesare, de regulă:</div>
+        <ul class="service-detail-list">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Hotărârea Adunării Generale a Asociaților sau decizia asociatului unic</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Actul doveditor al modificării (de exemplu, noul contract de sediu, la schimbarea acestuia)</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Cererea-tip de înregistrare mențiuni</li>
+        </ul>
+        <div class="service-detail-terms">⏱ <strong>Termene legale ONRC:</strong> cererea se soluționează în <strong>1 zi lucrătoare</strong> de la depunere, iar documentele se eliberează în încă <strong>2 zile lucrătoare de la soluționare</strong> (3 zile lucrătoare în total). Aceste termene sunt stabilite de Registrul Comerțului — pot apărea întârzieri din partea ONRC, independent de mine, mai ales în perioadele aglomerate.</div>
+        
+        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:1.5rem;">
+          <a href="#contact" class="hero-cta" onclick="navigateTo('home','contact')">Solicită acest serviciu</a>
+        </div>
+      </div>
+    </div>
+    <div class="service-detail-view" id="detail-mentiuni-pfa">
       <button class="article-back-btn" onclick="closeServiceDetail()">← Înapoi la servicii</button>
       <div class="service-detail-card">
         <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-        <h3 class="service-detail-title">Mențiuni ONRC</h3>
-        <p class="service-detail-desc">Depun și urmăresc toate tipurile de mențiuni la Oficiul Registrului Comerțului, inclusiv online prin portalul ONRC.</p>
-        <p class="service-detail-placeholder">Descriere detaliată în curs de completare — reveniți curând pentru informații extinse despre acest serviciu (etape, documente necesare, durată estimată).</p>
+        <h3 class="service-detail-title">Mențiuni ONRC — PFA / Î.I. / Î.F.</h3>
+        <p class="service-detail-desc">Depun și urmăresc mențiuni precum suspendarea temporară a activității sau reluarea acesteia, pentru PFA, Întreprindere Individuală sau Întreprindere Familială, inclusiv prin portalul online al ONRC.</p>
+        <div class="service-detail-list-title">Acte necesare, de regulă:</div>
+        <ul class="service-detail-list">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Cererea-tip de mențiuni pentru persoane fizice</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Declarația titularului privind suspendarea sau reluarea activității</li>
+        </ul>
+        <div class="service-detail-terms">⏱ <strong>Termene legale ONRC:</strong> cererea se soluționează în <strong>1 zi lucrătoare</strong> de la depunere, iar documentele se eliberează în încă <strong>2 zile lucrătoare de la soluționare</strong> (3 zile lucrătoare în total). Aceste termene sunt stabilite de Registrul Comerțului — pot apărea întârzieri din partea ONRC, independent de mine, mai ales în perioadele aglomerate.</div>
+        
         <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:1.5rem;">
           <a href="#contact" class="hero-cta" onclick="navigateTo('home','contact')">Solicită acest serviciu</a>
-          <button class="hero-cta-secondary article-copy-btn" onclick="copyLink('mentiuni-onrc', this)">🔗 Copiază linkul</button>
+        </div>
+      </div>
+    </div>
+    <div class="service-detail-view" id="detail-mentiuni-srl">
+      <button class="article-back-btn" onclick="closeServiceDetail()">← Înapoi la servicii</button>
+      <div class="service-detail-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        <h3 class="service-detail-title">Mențiuni ONRC — SRL</h3>
+        <p class="service-detail-desc">Depun și urmăresc mențiuni precum suspendarea sau reluarea activității, radierea unui punct de lucru și alte înregistrări similare pentru societăți comerciale, inclusiv prin portalul online al ONRC.</p>
+        <div class="service-detail-list-title">Acte necesare, de regulă:</div>
+        <ul class="service-detail-list">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Cererea-tip de mențiuni la Registrul Comerțului</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Hotărârea asociaților privind suspendarea sau reluarea activității</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Documentele specifice mențiunii solicitate</li>
+        </ul>
+        <div class="service-detail-terms">⏱ <strong>Termene legale ONRC:</strong> cererea se soluționează în <strong>1 zi lucrătoare</strong> de la depunere, iar documentele se eliberează în încă <strong>2 zile lucrătoare de la soluționare</strong> (3 zile lucrătoare în total). Aceste termene sunt stabilite de Registrul Comerțului — pot apărea întârzieri din partea ONRC, independent de mine, mai ales în perioadele aglomerate.</div>
+        
+        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:1.5rem;">
+          <a href="#contact" class="hero-cta" onclick="navigateTo('home','contact')">Solicită acest serviciu</a>
+        </div>
+      </div>
+    </div>
+    <div class="service-detail-view" id="detail-radiere-pfa">
+      <button class="article-back-btn" onclick="closeServiceDetail()">← Înapoi la servicii</button>
+      <div class="service-detail-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <h3 class="service-detail-title">Radiere PFA / Î.I. / Î.F.</h3>
+        <p class="service-detail-desc">Spre deosebire de o societate comercială, radierea unei PFA, Întreprinderi Individuale sau Familiale nu presupune dizolvare, lichidare sau publicare în Monitorul Oficial — este o procedură directă, de regulă rapidă.</p>
+        <div class="service-detail-list-title">Acte necesare, de regulă:</div>
+        <ul class="service-detail-list">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Cererea de radiere (bifată la secțiunea corespunzătoare)</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Certificatul de înregistrare original (și certificatele constatatoare, dacă există)</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Carte de identitate a titularului</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Documentul care atestă motivul radierii, dacă e cazul</li>
+        </ul>
+        <div class="service-detail-terms">⏱ <strong>Termene legale ONRC:</strong> cererea se soluționează în <strong>1 zi lucrătoare</strong> de la depunere, iar documentele se eliberează în încă <strong>2 zile lucrătoare de la soluționare</strong> (3 zile lucrătoare în total). Aceste termene sunt stabilite de Registrul Comerțului — pot apărea întârzieri din partea ONRC, independent de mine, mai ales în perioadele aglomerate.</div>
+        <p class="service-detail-note">Radierea de la Registrul Comerțului nu elimină automat obligațiile fiscale — Declarația Unică finală se depune separat, la ANAF.</p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:1.5rem;">
+          <a href="#contact" class="hero-cta" onclick="navigateTo('home','contact')">Solicită acest serviciu</a>
+        </div>
+      </div>
+    </div>
+    <div class="service-detail-view" id="detail-radiere-srl">
+      <button class="article-back-btn" onclick="closeServiceDetail()">← Înapoi la servicii</button>
+      <div class="service-detail-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <h3 class="service-detail-title">Radiere SRL</h3>
+        <p class="service-detail-desc">Gestionez întregul proces de închidere a unui SRL din Registrul Comerțului — dizolvarea, lichidarea și radierea efectivă — ținând legătura cu tine și cu contabilul firmei pe tot parcursul procedurii.</p>
+        <div class="service-detail-list-title">Acte necesare, de regulă:</div>
+        <ul class="service-detail-list">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Hotărârea Adunării Generale privind dizolvarea și lichidarea</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Certificatul de atestare fiscală, care confirmă lipsa datoriilor la stat</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Bilanțul de lichidare și raportul de lichidare, întocmite împreună cu contabilul firmei</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Dovada publicării hotărârii în Monitorul Oficial al României</li>
+        </ul>
+        <div class="service-detail-terms">⏱ <strong>Termene legale ONRC:</strong> cererea se soluționează în <strong>1 zi lucrătoare</strong> de la depunere, iar documentele se eliberează în încă <strong>2 zile lucrătoare de la soluționare</strong> (3 zile lucrătoare în total). Aceste termene sunt stabilite de Registrul Comerțului — pot apărea întârzieri din partea ONRC, independent de mine, mai ales în perioadele aglomerate.</div>
+        <p class="service-detail-note">Procesul are două etape (dizolvare, apoi radiere efectivă) și include o perioadă legală de așteptare de 30 de zile de la publicarea în Monitorul Oficial, pentru eventuale obiecții ale creditorilor. Din acest motiv, procesul complet durează de regulă mai multe săptămâni, chiar dacă fiecare cerere depusă la ONRC respectă termenele de mai jos.</p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:1.5rem;">
+          <a href="#contact" class="hero-cta" onclick="navigateTo('home','contact')">Solicită acest serviciu</a>
         </div>
       </div>
     </div>
@@ -704,11 +856,9 @@ footer { background: var(--navy-dark); border-top: 1px solid rgba(225,195,64,0.1
       <div class="service-detail-card">
         <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
         <h3 class="service-detail-title">Consultanță</h3>
-        <p class="service-detail-desc">Ofer consultanță specializată pentru alegerea formei juridice optime, restructurări și orice aspecte legate de activitatea firmei.</p>
-        <p class="service-detail-placeholder">Descriere detaliată în curs de completare — reveniți curând pentru informații extinse despre acest serviciu (etape, documente necesare, durată estimată).</p>
+        <p class="service-detail-desc">Ofer consultanță personalizată pentru alegerea formei juridice optime la înființare (SRL, PFA, Î.I. sau Î.F.), pentru restructurări ale firmei existente, precum și pentru orice altă decizie legată de activitatea firmei tale — de la extinderea obiectului de activitate până la organizarea internă. Consultația se desfășoară telefonic, prin email sau față în față, pe bază de programare, adaptată situației tale concrete: analizez datele afacerii tale, identific opțiunile disponibile și te ajut să alegi soluția potrivită, cu explicații clare, în română sau maghiară.</p>
         <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:1.5rem;">
           <a href="#contact" class="hero-cta" onclick="navigateTo('home','contact')">Solicită acest serviciu</a>
-          <button class="hero-cta-secondary article-copy-btn" onclick="copyLink('consultanta', this)">🔗 Copiază linkul</button>
         </div>
       </div>
     </div>
@@ -717,28 +867,12 @@ footer { background: var(--navy-dark); border-top: 1px solid rgba(225,195,64,0.1
       <div class="service-detail-card">
         <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
         <h3 class="service-detail-title">Declarație Unică</h3>
-        <p class="service-detail-desc">Asist persoanele fizice în completarea și depunerea Declarației Unice privind impozitul pe venit și contribuțiile sociale.</p>
-        <p class="service-detail-placeholder">Descriere detaliată în curs de completare — reveniți curând pentru informații extinse despre acest serviciu (etape, documente necesare, durată estimată).</p>
+        <p class="service-detail-desc">Asist persoanele fizice — titulari de PFA, Î.I., Î.F. sau alte persoane cu venituri impozabile — în completarea și depunerea Declarației Unice privind impozitul pe venit și contribuțiile sociale (CAS/CASS) la ANAF. Începând cu veniturile aferente anului 2025, declarația estimativă a fost eliminată — Declarația Unică se depune doar pentru veniturile efectiv realizate în anul fiscal încheiat, nu și pentru estimări ale anului în curs. Termenul legal de depunere și plată este, de regulă, 25 mai.</p>
         <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:1.5rem;">
           <a href="#contact" class="hero-cta" onclick="navigateTo('home','contact')">Solicită acest serviciu</a>
-          <button class="hero-cta-secondary article-copy-btn" onclick="copyLink('declaratie-unica', this)">🔗 Copiază linkul</button>
         </div>
       </div>
     </div>
-    <div class="service-detail-view" id="detail-radiere-firme">
-      <button class="article-back-btn" onclick="closeServiceDetail()">← Înapoi la servicii</button>
-      <div class="service-detail-card">
-        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
-        <h3 class="service-detail-title">Radiere firme</h3>
-        <p class="service-detail-desc">Gestionez întregul proces de radiere a firmei din Registrul Comerțului, inclusiv lichidarea voluntară și dizolvarea.</p>
-        <p class="service-detail-placeholder">Descriere detaliată în curs de completare — reveniți curând pentru informații extinse despre acest serviciu (etape, documente necesare, durată estimată).</p>
-        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:1.5rem;">
-          <a href="#contact" class="hero-cta" onclick="navigateTo('home','contact')">Solicită acest serviciu</a>
-          <button class="hero-cta-secondary article-copy-btn" onclick="copyLink('radiere-firme', this)">🔗 Copiază linkul</button>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>
 <footer>
   <div class="footer-inner">
@@ -765,22 +899,52 @@ footer { background: var(--navy-dark); border-top: 1px solid rgba(225,195,64,0.1
     <h2 class="section-title">Professzionális szolgáltatások</h2>
     <p class="section-subtitle">Tanácsadás és Cégnyilvántartási műveletek</p>
     <div class="services-grid">
-      <div class="service-card service-card-clickable" id="cegalapitas" onclick="openServiceDetail('cegalapitas')" tabindex="0" role="button">
+      <div class="service-card service-card-clickable" id="cegalapitas-ev" onclick="openServiceDetail('cegalapitas-ev')" tabindex="0" role="button">
         <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-        <div class="service-name">Cégalapítás</div>
-        <p class="service-desc">Segítek az új cég bejegyzésében a Cégbíróságon — Kft., EV, II, IF és egyéb jogi formák esetén.</p>
+        <div class="service-name">EV / Î.I. / Î.F. bejegyzés</div>
+        <p class="service-desc">Egyéni Vállalkozó, Egyéni Vállalkozás vagy Családi Vállalkozás bejegyzése a Cégbíróságon.</p>
         <span class="service-more">Részletek →</span>
       </div>
-      <div class="service-card service-card-clickable" id="cegmodositas" onclick="openServiceDetail('cegmodositas')" tabindex="0" role="button">
+      <div class="service-card service-card-clickable" id="cegalapitas-kft" onclick="openServiceDetail('cegalapitas-kft')" tabindex="0" role="button">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <div class="service-name">Kft. bejegyzés</div>
+        <p class="service-desc">Korlátolt Felelősségű Társaság bejegyzése a Cégbíróságon.</p>
+        <span class="service-more">Részletek →</span>
+      </div>
+      <div class="service-card service-card-clickable" id="cegmodositas-ev" onclick="openServiceDetail('cegmodositas-ev')" tabindex="0" role="button">
         <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
-        <div class="service-name">Cégmódosítás</div>
-        <p class="service-desc">Feldolgozom a cég adatainak minden módosítását: székhely, ügyvezető, tevékenységi kör, alaptőke változtatás és egyebek.</p>
+        <div class="service-name">EV / Î.I. / Î.F. módosítás</div>
+        <p class="service-desc">Egy EV, Î.I. vagy Î.F. székhelyének, tevékenységi körének vagy egyéb adatainak módosítása.</p>
         <span class="service-more">Részletek →</span>
       </div>
-      <div class="service-card service-card-clickable" id="onrc-bejegyzes" onclick="openServiceDetail('onrc-bejegyzes')" tabindex="0" role="button">
+      <div class="service-card service-card-clickable" id="cegmodositas-kft" onclick="openServiceDetail('cegmodositas-kft')" tabindex="0" role="button">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
+        <div class="service-name">Kft. módosítás</div>
+        <p class="service-desc">Egy Kft. székhelyének, ügyvezetőjének, tevékenységi körének vagy alaptőkéjének módosítása.</p>
+        <span class="service-more">Részletek →</span>
+      </div>
+      <div class="service-card service-card-clickable" id="onrc-bejegyzes-ev" onclick="openServiceDetail('onrc-bejegyzes-ev')" tabindex="0" role="button">
         <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-        <div class="service-name">ONRC bejegyzés</div>
-        <p class="service-desc">Benyújtok és nyomon követek minden típusú bejegyzést a Cégbíróságon, beleértve az online ONRC portálon keresztülieket is.</p>
+        <div class="service-name">ONRC bejegyzések — EV / Î.I. / Î.F.</div>
+        <p class="service-desc">Tevékenység felfüggesztése, folytatása és egyéb bejegyzések EV, Î.I. vagy Î.F. esetén.</p>
+        <span class="service-more">Részletek →</span>
+      </div>
+      <div class="service-card service-card-clickable" id="onrc-bejegyzes-kft" onclick="openServiceDetail('onrc-bejegyzes-kft')" tabindex="0" role="button">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        <div class="service-name">ONRC bejegyzések — Kft.</div>
+        <p class="service-desc">Tevékenység felfüggesztése, folytatása, telephely törlése és egyéb bejegyzések Kft. esetén.</p>
+        <span class="service-more">Részletek →</span>
+      </div>
+      <div class="service-card service-card-clickable" id="cegbeszuntetes-ev" onclick="openServiceDetail('cegbeszuntetes-ev')" tabindex="0" role="button">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <div class="service-name">EV / Î.I. / Î.F. törlése</div>
+        <p class="service-desc">Egy EV, Î.I. vagy Î.F. megszüntetése — egyszerű eljárás, felszámolás nélkül.</p>
+        <span class="service-more">Részletek →</span>
+      </div>
+      <div class="service-card service-card-clickable" id="cegbeszuntetes-kft" onclick="openServiceDetail('cegbeszuntetes-kft')" tabindex="0" role="button">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <div class="service-name">Kft. törlése</div>
+        <p class="service-desc">Egy Kft. megszüntetése, felszámolása és törlése a Cégbíróságtól.</p>
         <span class="service-more">Részletek →</span>
       </div>
       <div class="service-card service-card-clickable" id="tanacsadas" onclick="openServiceDetail('tanacsadas')" tabindex="0" role="button">
@@ -795,49 +959,161 @@ footer { background: var(--navy-dark); border-top: 1px solid rgba(225,195,64,0.1
         <p class="service-desc">Segítek a magánszemélyeknek a jövedelemadóról és társadalombiztosítási járulékokról szóló Egységes Nyilatkozat kitöltésében és benyújtásában.</p>
         <span class="service-more">Részletek →</span>
       </div>
-      <div class="service-card service-card-clickable" id="cegbeszuntetes" onclick="openServiceDetail('cegbeszuntetes')" tabindex="0" role="button">
-        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
-        <div class="service-name">Cégbeszüntetés</div>
-        <p class="service-desc">Kezelem a cég törlésének teljes folyamatát a Cégbíróságból, beleértve az önkéntes felszámolást és a megszüntetést.</p>
-        <span class="service-more">Részletek →</span>
-      </div>
     </div>
-    <div class="service-detail-view" id="detail-cegalapitas">
+    <div class="service-detail-view" id="detail-cegalapitas-ev">
       <button class="article-back-btn" onclick="closeServiceDetail()">← Vissza a szolgáltatásokhoz</button>
       <div class="service-detail-card">
         <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-        <h3 class="service-detail-title">Cégalapítás</h3>
-        <p class="service-detail-desc">Segítek az új cég bejegyzésében a Cégbíróságon — Kft., EV, II, IF és egyéb jogi formák esetén.</p>
-        <p class="service-detail-placeholder">Részletes leírás hamarosan — térjen vissza bővebb információkért erről a szolgáltatásról (lépések, szükséges dokumentumok, becsült időtartam).</p>
+        <h3 class="service-detail-title">EV / Î.I. / Î.F. bejegyzés</h3>
+        <p class="service-detail-desc">Az EV, Egyéni Vállalkozás (Î.I.) vagy Családi Vállalkozás (Î.F.) alapítása megfelelő megoldás egyetlen személy vagy egy család által végzett tevékenységhez, egyszerűbb formaságokkal, mint egy gazdasági társaság esetén. Vállalom a névfoglalást, a megfelelő CAEN-kódok kiválasztását és a teljes dosszié benyújtását a Cégbírósághoz.</p>
+        <div class="service-detail-list-title">Általában szükséges dokumentumok:</div>
+        <ul class="service-detail-list">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>A tulajdonos személyi igazolványa</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>A székhely igazolása — haszonkölcsön- vagy bérleti szerződés, a tulajdoni lap másolatával; a lakóközösség hozzájárulása, ha a tevékenységet lakásban végzik</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Szakképesítés vagy tapasztalat igazolása a választott tevékenységben (EV esetén)</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Cégnév-ellenőrzési és -lefoglalási kérelem, majd bejegyzési kérelem</li>
+        </ul>
+        <div class="service-detail-terms">⏱ <strong>ONRC törvényes határidők:</strong> a kérelmet <strong>1 munkanapon</strong> belül elbírálják a benyújtástól számítva, a dokumentumokat pedig további <strong>2 munkanapon belül</strong>, az elbírálástól számítva állítják ki (összesen 3 munkanap). Ezeket a határidőket a Cégbíróság határozza meg — tőlem függetlenül előfordulhatnak késések az ONRC részéről, különösen a zsúfolt időszakokban.</div>
+        
         <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:1.5rem;">
           <a href="#kapcsolat" class="hero-cta" onclick="navigateTo('home','kapcsolat')">Igényelje ezt a szolgáltatást</a>
-          <button class="hero-cta-secondary article-copy-btn" onclick="copyLink('cegalapitas', this)">🔗 Link másolása</button>
         </div>
       </div>
     </div>
-    <div class="service-detail-view" id="detail-cegmodositas">
+    <div class="service-detail-view" id="detail-cegalapitas-kft">
+      <button class="article-back-btn" onclick="closeServiceDetail()">← Vissza a szolgáltatásokhoz</button>
+      <div class="service-detail-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <h3 class="service-detail-title">Kft. bejegyzés</h3>
+        <p class="service-detail-desc">A Kft. alapítása magában foglalja az alapító okirat elkészítését, az alaptőke és a CAEN-kódok meghatározását, valamint egy kicsit terjedelmesebb dossziét, mint az EV esetén. Segítek a teljes folyamatban, a névfoglalástól a bejegyzési igazolás átvételéig.</p>
+        <div class="service-detail-list-title">Általában szükséges dokumentumok:</div>
+        <ul class="service-detail-list">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>A tagok és az ügyvezető személyi igazolványai</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>A székhely igazolása — haszonkölcsön- vagy bérleti szerződés, a tulajdoni lap másolatával; a lakóközösség hozzájárulása, ha szükséges</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>A társaság alapító okirata</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Végső haszonhúzói nyilatkozat</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Az alaptőke bankszámlára történő befizetésének igazolása</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Cégnév-ellenőrzési és -lefoglalási kérelem, majd bejegyzési kérelem</li>
+        </ul>
+        <div class="service-detail-terms">⏱ <strong>ONRC törvényes határidők:</strong> a kérelmet <strong>1 munkanapon</strong> belül elbírálják a benyújtástól számítva, a dokumentumokat pedig további <strong>2 munkanapon belül</strong>, az elbírálástól számítva állítják ki (összesen 3 munkanap). Ezeket a határidőket a Cégbíróság határozza meg — tőlem függetlenül előfordulhatnak késések az ONRC részéről, különösen a zsúfolt időszakokban.</div>
+        
+        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:1.5rem;">
+          <a href="#kapcsolat" class="hero-cta" onclick="navigateTo('home','kapcsolat')">Igényelje ezt a szolgáltatást</a>
+        </div>
+      </div>
+    </div>
+    <div class="service-detail-view" id="detail-cegmodositas-ev">
       <button class="article-back-btn" onclick="closeServiceDetail()">← Vissza a szolgáltatásokhoz</button>
       <div class="service-detail-card">
         <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
-        <h3 class="service-detail-title">Cégmódosítás</h3>
-        <p class="service-detail-desc">Feldolgozom a cég adatainak minden módosítását: székhely, ügyvezető, tevékenységi kör, alaptőke változtatás és egyebek.</p>
-        <p class="service-detail-placeholder">Részletes leírás hamarosan — térjen vissza bővebb információkért erről a szolgáltatásról (lépések, szükséges dokumentumok, becsült időtartam).</p>
+        <h3 class="service-detail-title">EV / Î.I. / Î.F. módosítás</h3>
+        <p class="service-detail-desc">Az EV, Egyéni Vállalkozás vagy Családi Vállalkozás székhelyét, CAEN-kódjait vagy egyéb adatait érintő bármilyen változást be kell jegyeztetni a Cégbíróságon. Elkészítem a megfelelő dokumentumokat, és benyújtom a teljes dossziét.</p>
+        <div class="service-detail-list-title">Általában szükséges dokumentumok:</div>
+        <ul class="service-detail-list">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Bejegyzés-módosítási kérelem magánszemélyek számára</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>A módosítást igazoló irat (például az új székhely-szerződés)</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>A tulajdonos személyi igazolványa</li>
+        </ul>
+        <div class="service-detail-terms">⏱ <strong>ONRC törvényes határidők:</strong> a kérelmet <strong>1 munkanapon</strong> belül elbírálják a benyújtástól számítva, a dokumentumokat pedig további <strong>2 munkanapon belül</strong>, az elbírálástól számítva állítják ki (összesen 3 munkanap). Ezeket a határidőket a Cégbíróság határozza meg — tőlem függetlenül előfordulhatnak késések az ONRC részéről, különösen a zsúfolt időszakokban.</div>
+        
         <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:1.5rem;">
           <a href="#kapcsolat" class="hero-cta" onclick="navigateTo('home','kapcsolat')">Igényelje ezt a szolgáltatást</a>
-          <button class="hero-cta-secondary article-copy-btn" onclick="copyLink('cegmodositas', this)">🔗 Link másolása</button>
         </div>
       </div>
     </div>
-    <div class="service-detail-view" id="detail-onrc-bejegyzes">
+    <div class="service-detail-view" id="detail-cegmodositas-kft">
+      <button class="article-back-btn" onclick="closeServiceDetail()">← Vissza a szolgáltatásokhoz</button>
+      <div class="service-detail-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
+        <h3 class="service-detail-title">Kft. módosítás</h3>
+        <p class="service-detail-desc">A Kft. székhelyének, ügyvezetőjének, tevékenységi körének, alaptőkéjének vagy egyéb adatainak módosítását a taggyűlés határozata alapján kell bejegyeztetni a Cégbíróságon.</p>
+        <div class="service-detail-list-title">Általában szükséges dokumentumok:</div>
+        <ul class="service-detail-list">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>A taggyűlés határozata vagy az egyedüli tag döntése</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>A módosítást igazoló irat (például az új székhely-szerződés, székhelyváltozás esetén)</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Bejegyzés-módosítási kérelem</li>
+        </ul>
+        <div class="service-detail-terms">⏱ <strong>ONRC törvényes határidők:</strong> a kérelmet <strong>1 munkanapon</strong> belül elbírálják a benyújtástól számítva, a dokumentumokat pedig további <strong>2 munkanapon belül</strong>, az elbírálástól számítva állítják ki (összesen 3 munkanap). Ezeket a határidőket a Cégbíróság határozza meg — tőlem függetlenül előfordulhatnak késések az ONRC részéről, különösen a zsúfolt időszakokban.</div>
+        
+        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:1.5rem;">
+          <a href="#kapcsolat" class="hero-cta" onclick="navigateTo('home','kapcsolat')">Igényelje ezt a szolgáltatást</a>
+        </div>
+      </div>
+    </div>
+    <div class="service-detail-view" id="detail-onrc-bejegyzes-ev">
       <button class="article-back-btn" onclick="closeServiceDetail()">← Vissza a szolgáltatásokhoz</button>
       <div class="service-detail-card">
         <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-        <h3 class="service-detail-title">ONRC bejegyzés</h3>
-        <p class="service-detail-desc">Benyújtok és nyomon követek minden típusú bejegyzést a Cégbíróságon, beleértve az online ONRC portálon keresztülieket is.</p>
-        <p class="service-detail-placeholder">Részletes leírás hamarosan — térjen vissza bővebb információkért erről a szolgáltatásról (lépések, szükséges dokumentumok, becsült időtartam).</p>
+        <h3 class="service-detail-title">ONRC bejegyzések — EV / Î.I. / Î.F.</h3>
+        <p class="service-detail-desc">Benyújtok és nyomon követek olyan bejegyzéseket, mint a tevékenység ideiglenes felfüggesztése vagy folytatása, EV, Egyéni Vállalkozás vagy Családi Vállalkozás esetén, akár az ONRC online portálján keresztül is.</p>
+        <div class="service-detail-list-title">Általában szükséges dokumentumok:</div>
+        <ul class="service-detail-list">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Bejegyzési kérelem magánszemélyek számára</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>A tulajdonos nyilatkozata a felfüggesztésről vagy folytatásról</li>
+        </ul>
+        <div class="service-detail-terms">⏱ <strong>ONRC törvényes határidők:</strong> a kérelmet <strong>1 munkanapon</strong> belül elbírálják a benyújtástól számítva, a dokumentumokat pedig további <strong>2 munkanapon belül</strong>, az elbírálástól számítva állítják ki (összesen 3 munkanap). Ezeket a határidőket a Cégbíróság határozza meg — tőlem függetlenül előfordulhatnak késések az ONRC részéről, különösen a zsúfolt időszakokban.</div>
+        
         <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:1.5rem;">
           <a href="#kapcsolat" class="hero-cta" onclick="navigateTo('home','kapcsolat')">Igényelje ezt a szolgáltatást</a>
-          <button class="hero-cta-secondary article-copy-btn" onclick="copyLink('onrc-bejegyzes', this)">🔗 Link másolása</button>
+        </div>
+      </div>
+    </div>
+    <div class="service-detail-view" id="detail-onrc-bejegyzes-kft">
+      <button class="article-back-btn" onclick="closeServiceDetail()">← Vissza a szolgáltatásokhoz</button>
+      <div class="service-detail-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        <h3 class="service-detail-title">ONRC bejegyzések — Kft.</h3>
+        <p class="service-detail-desc">Benyújtok és nyomon követek olyan bejegyzéseket, mint a tevékenység felfüggesztése vagy folytatása, egy telephely törlése és egyéb hasonló bejegyzések gazdasági társaságok esetén, akár az ONRC online portálján keresztül is.</p>
+        <div class="service-detail-list-title">Általában szükséges dokumentumok:</div>
+        <ul class="service-detail-list">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Bejegyzési kérelem a Cégbíróságon</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>A tagok határozata a felfüggesztésről vagy folytatásról</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>A kért bejegyzéshez szükséges specifikus dokumentumok</li>
+        </ul>
+        <div class="service-detail-terms">⏱ <strong>ONRC törvényes határidők:</strong> a kérelmet <strong>1 munkanapon</strong> belül elbírálják a benyújtástól számítva, a dokumentumokat pedig további <strong>2 munkanapon belül</strong>, az elbírálástól számítva állítják ki (összesen 3 munkanap). Ezeket a határidőket a Cégbíróság határozza meg — tőlem függetlenül előfordulhatnak késések az ONRC részéről, különösen a zsúfolt időszakokban.</div>
+        
+        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:1.5rem;">
+          <a href="#kapcsolat" class="hero-cta" onclick="navigateTo('home','kapcsolat')">Igényelje ezt a szolgáltatást</a>
+        </div>
+      </div>
+    </div>
+    <div class="service-detail-view" id="detail-cegbeszuntetes-ev">
+      <button class="article-back-btn" onclick="closeServiceDetail()">← Vissza a szolgáltatásokhoz</button>
+      <div class="service-detail-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <h3 class="service-detail-title">EV / Î.I. / Î.F. törlése</h3>
+        <p class="service-detail-desc">Egy gazdasági társasággal ellentétben, egy EV, Egyéni Vállalkozás vagy Családi Vállalkozás törlése nem igényel megszüntetést, felszámolást vagy Hivatalos Közlönyben történő közzétételt — ez egy közvetlen, általában gyors eljárás.</p>
+        <div class="service-detail-list-title">Általában szükséges dokumentumok:</div>
+        <ul class="service-detail-list">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Törlési kérelem (a megfelelő szakasznál bejelölve)</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Az eredeti bejegyzési igazolás (és az esetleges igazoló okiratok)</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>A tulajdonos személyi igazolványa</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>A törlés okát igazoló dokumentum, ha alkalmazandó</li>
+        </ul>
+        <div class="service-detail-terms">⏱ <strong>ONRC törvényes határidők:</strong> a kérelmet <strong>1 munkanapon</strong> belül elbírálják a benyújtástól számítva, a dokumentumokat pedig további <strong>2 munkanapon belül</strong>, az elbírálástól számítva állítják ki (összesen 3 munkanap). Ezeket a határidőket a Cégbíróság határozza meg — tőlem függetlenül előfordulhatnak késések az ONRC részéről, különösen a zsúfolt időszakokban.</div>
+        <p class="service-detail-note">A Cégbíróságtól való törlés nem szünteti meg automatikusan az adózási kötelezettségeket — a végső Egységes Nyilatkozatot külön, az ANAF-nál kell benyújtani.</p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:1.5rem;">
+          <a href="#kapcsolat" class="hero-cta" onclick="navigateTo('home','kapcsolat')">Igényelje ezt a szolgáltatást</a>
+        </div>
+      </div>
+    </div>
+    <div class="service-detail-view" id="detail-cegbeszuntetes-kft">
+      <button class="article-back-btn" onclick="closeServiceDetail()">← Vissza a szolgáltatásokhoz</button>
+      <div class="service-detail-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <h3 class="service-detail-title">Kft. törlése</h3>
+        <p class="service-detail-desc">Kezelem egy Kft. Cégbíróságtól való törlésének teljes folyamatát — a megszüntetést, a felszámolást és a tényleges törlést —, folyamatosan kapcsolatot tartva Önnel és a cég könyvelőjével az eljárás során.</p>
+        <div class="service-detail-list-title">Általában szükséges dokumentumok:</div>
+        <ul class="service-detail-list">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>A taggyűlés határozata a megszüntetésről és felszámolásról</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Adóügyi igazolás, amely megerősíti, hogy nincs tartozás az állam felé</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Felszámolási mérleg és felszámolási jelentés, a cég könyvelőjével közösen elkészítve</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Igazolás a határozat Hivatalos Közlönyben történő közzétételéről</li>
+        </ul>
+        <div class="service-detail-terms">⏱ <strong>ONRC törvényes határidők:</strong> a kérelmet <strong>1 munkanapon</strong> belül elbírálják a benyújtástól számítva, a dokumentumokat pedig további <strong>2 munkanapon belül</strong>, az elbírálástól számítva állítják ki (összesen 3 munkanap). Ezeket a határidőket a Cégbíróság határozza meg — tőlem függetlenül előfordulhatnak késések az ONRC részéről, különösen a zsúfolt időszakokban.</div>
+        <p class="service-detail-note">A folyamat két szakaszból áll (megszüntetés, majd tényleges törlés), és magában foglalja a Hivatalos Közlönyben történő közzétételt követő törvényes 30 napos várakozási időt. Emiatt a teljes folyamat általában több hétig tart, még akkor is, ha az ONRC-hez benyújtott egyes kérelmek betartják az alábbi határidőket.</p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:1.5rem;">
+          <a href="#kapcsolat" class="hero-cta" onclick="navigateTo('home','kapcsolat')">Igényelje ezt a szolgáltatást</a>
         </div>
       </div>
     </div>
@@ -846,11 +1122,9 @@ footer { background: var(--navy-dark); border-top: 1px solid rgba(225,195,64,0.1
       <div class="service-detail-card">
         <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
         <h3 class="service-detail-title">Tanácsadás</h3>
-        <p class="service-detail-desc">Szakosodott tanácsadást nyújtok az optimális jogi forma megválasztásában, átszervezésekben és a cég működésével kapcsolatos kérdésekben.</p>
-        <p class="service-detail-placeholder">Részletes leírás hamarosan — térjen vissza bővebb információkért erről a szolgáltatásról (lépések, szükséges dokumentumok, becsült időtartam).</p>
+        <p class="service-detail-desc">Személyre szabott tanácsadást nyújtok az optimális jogi forma megválasztásában alapításkor (Kft., EV, Î.I. vagy Î.F.), a meglévő cég átszervezésében, valamint a cég működésével kapcsolatos bármely más döntésben — a tevékenységi kör bővítésétől a belső szervezésig. A tanácsadás telefonon, e-mailen vagy személyesen zajlik, előjegyzés alapján, az Ön konkrét helyzetéhez igazítva: elemzem a vállalkozása adatait, azonosítom a rendelkezésre álló lehetőségeket, és segítek a megfelelő megoldás kiválasztásában, világos magyarázatokkal, románul vagy magyarul.</p>
         <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:1.5rem;">
           <a href="#kapcsolat" class="hero-cta" onclick="navigateTo('home','kapcsolat')">Igényelje ezt a szolgáltatást</a>
-          <button class="hero-cta-secondary article-copy-btn" onclick="copyLink('tanacsadas', this)">🔗 Link másolása</button>
         </div>
       </div>
     </div>
@@ -859,27 +1133,13 @@ footer { background: var(--navy-dark); border-top: 1px solid rgba(225,195,64,0.1
       <div class="service-detail-card">
         <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
         <h3 class="service-detail-title">Adóbevallás</h3>
-        <p class="service-detail-desc">Segítek a magánszemélyeknek a jövedelemadóról és társadalombiztosítási járulékokról szóló Egységes Nyilatkozat kitöltésében és benyújtásában.</p>
-        <p class="service-detail-placeholder">Részletes leírás hamarosan — térjen vissza bővebb információkért erről a szolgáltatásról (lépések, szükséges dokumentumok, becsült időtartam).</p>
+        <p class="service-detail-desc">Segítek a magánszemélyeknek — EV, Î.I., Î.F. tulajdonosoknak vagy más adóköteles jövedelemmel rendelkezőknek — a jövedelemadóról és társadalombiztosítási járulékokról (CAS/CASS) szóló Egységes Nyilatkozat kitöltésében és benyújtásában az ANAF-nál. A 2025-ös jövedelmektől kezdve a becsült jövedelemre vonatkozó nyilatkozatot eltörölték — az Egységes Nyilatkozatot kizárólag a lezárt adóévben ténylegesen megszerzett jövedelemre kell benyújtani, nem a folyó év becslésére. A törvényes benyújtási és fizetési határidő általában május 25.</p>
         <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:1.5rem;">
           <a href="#kapcsolat" class="hero-cta" onclick="navigateTo('home','kapcsolat')">Igényelje ezt a szolgáltatást</a>
-          <button class="hero-cta-secondary article-copy-btn" onclick="copyLink('adobevallas', this)">🔗 Link másolása</button>
         </div>
       </div>
     </div>
-    <div class="service-detail-view" id="detail-cegbeszuntetes">
-      <button class="article-back-btn" onclick="closeServiceDetail()">← Vissza a szolgáltatásokhoz</button>
-      <div class="service-detail-card">
-        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
-        <h3 class="service-detail-title">Cégbeszüntetés</h3>
-        <p class="service-detail-desc">Kezelem a cég törlésének teljes folyamatát a Cégbíróságból, beleértve az önkéntes felszámolást és a megszüntetést.</p>
-        <p class="service-detail-placeholder">Részletes leírás hamarosan — térjen vissza bővebb információkért erről a szolgáltatásról (lépések, szükséges dokumentumok, becsült időtartam).</p>
-        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:1.5rem;">
-          <a href="#kapcsolat" class="hero-cta" onclick="navigateTo('home','kapcsolat')">Igényelje ezt a szolgáltatást</a>
-          <button class="hero-cta-secondary article-copy-btn" onclick="copyLink('cegbeszuntetes', this)">🔗 Link másolása</button>
-        </div>
-      </div>
-    </div>
+
   </div>
 </section>
 <footer>
@@ -1097,7 +1357,6 @@ footer { background: var(--navy-dark); border-top: 1px solid rgba(225,195,64,0.1
         </div>
         <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
           <a href="#contact" class="hero-cta" onclick="navigateTo('home','contact')">Solicită consultanță</a>
-          <button class="hero-cta-secondary article-copy-btn" onclick="copyArticleLink('caen', this)">🔗 Copiază linkul</button>
         </div>
         <div class="news-alert-langs">Servicii disponibile în limba română și maghiară.</div>
       </div>
@@ -1200,7 +1459,6 @@ footer { background: var(--navy-dark); border-top: 1px solid rgba(225,195,64,0.1
         </div>
         <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
           <a href="#kapcsolat" class="hero-cta" onclick="navigateTo('home','kapcsolat')">Tanácsadást kérek</a>
-          <button class="hero-cta-secondary article-copy-btn" onclick="copyArticleLink('caen', this)">🔗 Link másolása</button>
         </div>
         <div class="news-alert-langs">Szolgáltatások románul és magyarul is elérhetők.</div>
       </div>
@@ -1430,8 +1688,8 @@ renderNews();
   try { saved = localStorage.getItem('gsnii_lang') || 'ro'; } catch(e) {}
   setLang(saved);
 
-  var serviceAnchors = ['infiintare-firme','modificari-firme','mentiuni-onrc','consultanta','declaratie-unica','radiere-firme',
-                         'cegalapitas','cegmodositas','onrc-bejegyzes','tanacsadas','adobevallas','cegbeszuntetes'];
+  var serviceAnchors = ['infiintare-pfa','infiintare-srl','modificari-pfa','modificari-srl','mentiuni-pfa','mentiuni-srl','radiere-pfa','radiere-srl','consultanta','declaratie-unica',
+                         'cegalapitas-ev','cegalapitas-kft','cegmodositas-ev','cegmodositas-kft','onrc-bejegyzes-ev','onrc-bejegyzes-kft','cegbeszuntetes-ev','cegbeszuntetes-kft','tanacsadas','adobevallas'];
   var pageMap = { servicii:'servicii', szolgaltatasok:'servicii', preturi:'preturi', arak:'preturi',
                   noutati:'noutati', hirek:'noutati', despre:'home', rolam:'home', contact:'home', kapcsolat:'home' };
   var hash = window.location.hash.replace('#', '');
