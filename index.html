@@ -177,7 +177,12 @@ nav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.2); }
 .price-name { font-size: 16px; font-weight: 700; color: var(--navy); line-height: 1.3; }
 .price-value { font-size: 15px; font-weight: 800; color: var(--navy); white-space: nowrap; background: var(--gold-light); border: 1px solid var(--gold-dim); padding: 4px 12px; border-radius: 20px; flex-shrink: 0; }
 .price-desc { font-size: 13.5px; color: var(--text-light); line-height: 1.6; }
+.pricing-group-title { font-family: var(--font-display); font-size: 19px; font-weight: 700; color: var(--navy); margin: 2.5rem 0 1.1rem; display: flex; align-items: center; gap: 12px; }
+.pricing-group-title::after { content: ''; flex: 1; height: 1px; background: rgba(12,40,79,0.12); }
+.pricing-group-title:first-of-type { margin-top: 0.5rem; }
 .price-note { grid-column: 1/-1; font-size: 12.5px; color: var(--text-light); font-style: italic; text-align: center; margin-top: 0.5rem; }
+.price-group-title { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--navy); margin: 2.5rem 0 1.25rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--gold-dim); }
+.price-group-title:first-of-type { margin-top: 0.5rem; }
 .price-card.featured { border: 1.5px solid var(--gold); box-shadow: var(--shadow-lg); transform: translateY(-4px); }
 .price-card.featured::before { transform: scaleX(1); }
 .price-badge { position: absolute; top: 0; right: 1.25rem; background: var(--gold); color: var(--navy); font-size: 10.5px; font-weight: 800; letter-spacing: 0.8px; padding: 5px 12px; border-radius: 0 0 8px 8px; }
@@ -198,7 +203,7 @@ nav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.2); }
 .service-card-clickable:hover .service-more { color: var(--navy); }
 .service-detail-view { display: none; }
 .service-detail-view.open { display: block; }
-.service-detail-card { background: var(--white); border: 1px solid rgba(12,40,79,0.08); border-radius: var(--radius); padding: 2.25rem; box-shadow: var(--shadow); max-width: 700px; }
+.service-detail-card { background: var(--white); border: 1px solid rgba(12,40,79,0.08); border-radius: var(--radius); padding: 2.25rem; box-shadow: var(--shadow); max-width: 760px; margin: 0 auto; }
 .service-detail-card .service-icon { margin-bottom: 1.2rem; }
 .service-detail-title { font-family: var(--font-display); font-size: 26px; font-weight: 700; color: var(--navy); margin-bottom: 1rem; }
 .service-detail-desc { font-size: 15.5px; color: var(--text); line-height: 1.75; margin-bottom: 1rem; }
@@ -241,6 +246,7 @@ nav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.2); }
   border: 1px solid var(--gold-dim); color: var(--navy); font-weight: 800; font-size: 14.5px;
   padding: 8px 16px; border-radius: 8px; margin: 0.25rem 0 1.1rem;
 }
+.news-alert-date svg { width: 18px; height: 18px; stroke: var(--navy); fill: none; stroke-width: 2; flex-shrink: 0; }
 .news-alert-checklist { list-style: none; margin: 0 0 1.25rem; padding: 0; }
 .news-alert-checklist li { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--text); margin-bottom: 0.55rem; line-height: 1.5; }
 .news-alert-checklist svg { width: 17px; height: 17px; stroke: var(--gold); fill: none; stroke-width: 2.2; flex-shrink: 0; margin-top: 2px; }
@@ -391,7 +397,7 @@ footer { background: var(--navy-dark); border-top: 1px solid rgba(225,195,64,0.1
   <div class="hero-accent"></div>
   <div class="hero-content">
     <div class="hero-left">
-      <div class="hero-eyebrow">Întreprindere Individuală · Sălaj</div>
+      <div class="hero-eyebrow">Întreprindere Individuală · Servicii online în toată România</div>
       <h1 class="hero-name">Firma ta, <span class="accent">înregistrată corect</span> din prima încercare</h1>
       <div class="hero-divider">
         <div class="hero-divider-line"></div>
@@ -475,7 +481,7 @@ footer { background: var(--navy-dark); border-top: 1px solid rgba(225,195,64,0.1
         </div>
         <div class="contact-info-item">
           <div class="contact-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-          <div><div class="contact-label">PROGRAM</div><div class="contact-value" style="font-weight:400;font-size:14px">Pe bază de programare<br>Telefonic sau email</div></div>
+          <div><div class="contact-label">PROGRAM</div><div class="contact-value" style="font-weight:400;font-size:14px">Pe bază de programare<br>Telefonic, email sau video — de oriunde din România<br>Întâlniri față în față: Sălaj (la sediu) sau Cluj (la cerere)</div></div>
         </div>
         <div class="contact-info-item">
           <div class="contact-icon"><svg viewBox="0 0 24 24" stroke-width="0" fill="var(--gold)"><path d="M22 12a10 10 0 10-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0022 12z"/></svg></div>
@@ -515,7 +521,7 @@ footer { background: var(--navy-dark); border-top: 1px solid rgba(225,195,64,0.1
   <div class="hero-accent"></div>
   <div class="hero-content">
     <div class="hero-left">
-      <div class="hero-eyebrow">Egyéni Vállalkozó · Szilágy megye</div>
+      <div class="hero-eyebrow">Egyéni Vállalkozó · Online szolgáltatás egész Romániában</div>
       <h1 class="hero-name">Cége, <span class="accent">elsőre helyesen</span> bejegyezve</h1>
       <div class="hero-divider">
         <div class="hero-divider-line"></div>
@@ -589,7 +595,7 @@ footer { background: var(--navy-dark); border-top: 1px solid rgba(225,195,64,0.1
         </div>
         <div class="contact-info-item">
           <div class="contact-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-          <div><div class="contact-label">PROGRAM</div><div class="contact-value" style="font-weight:400;font-size:14px">Előjegyzéssel<br>Telefonon vagy e-mailen</div></div>
+          <div><div class="contact-label">PROGRAM</div><div class="contact-value" style="font-weight:400;font-size:14px">Előjegyzéssel<br>Telefonon, e-mailen vagy videóhívással — bárhonnan Romániából<br>Személyes találkozó: Szilágy megyében (székhelyen) vagy Kolozsváron (egyeztetés szerint)</div></div>
         </div>
         <div class="contact-info-item">
           <div class="contact-icon"><svg viewBox="0 0 24 24" stroke-width="0" fill="var(--gold)"><path d="M22 12a10 10 0 10-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0022 12z"/></svg></div>
@@ -1168,31 +1174,52 @@ footer { background: var(--navy-dark); border-top: 1px solid rgba(225,195,64,0.1
     <div class="section-label">TARIFE</div>
     <h2 class="section-title">Lista de prețuri</h2>
     <p class="section-subtitle">Prețuri orientative — detaliile finale se stabilesc la consultanță</p>
+    <h3 class="pricing-group-title">PFA / Î.I. / Î.F.</h3>
     <div class="pricing-grid">
-      <div class="price-card">
-        <div class="price-card-top"><div class="price-name">Consultanță de specialitate</div><div class="price-value">150 lei/oră</div></div>
-        <p class="price-desc">Consiliere personalizată pentru alegerea formei juridice, restructurări și orice aspecte legate de activitatea firmei.</p>
-      </div>
       <div class="price-card featured reveal">
         <div class="price-badge">RECOMANDAT</div>
         <div class="price-card-top"><div class="price-name">Înmatriculare PFA / Î.I. / I.F.</div><div class="price-value">550 lei</div></div>
         <p class="price-desc">Pregătirea și depunerea dosarului complet de înregistrare.</p>
       </div>
+      <div class="price-card">
+        <div class="price-card-top"><div class="price-name">Mențiuni ONRC — PFA / Î.I. / Î.F.</div><div class="price-value">350 lei</div></div>
+        <p class="price-desc">Suspendare și/sau reluare activitate și alte mențiuni. Preț per operațiune.</p>
+      </div>
+      <div class="price-card">
+        <div class="price-card-top"><div class="price-name">Radiere PFA / Î.I. / Î.F.</div><div class="price-value">550 lei</div></div>
+        <p class="price-desc">Procedură simplă, fără dizolvare și lichidare.</p>
+      </div>
+      <div class="price-card">
+        <div class="price-card-top"><div class="price-name">Declarație Unică (Formular 212)</div><div class="price-value">200 lei</div></div>
+        <p class="price-desc">Completarea și depunerea Declarației Unice privind impozitul pe venit și contribuțiile sociale.</p>
+      </div>
+    </div>
+
+    <h3 class="pricing-group-title">SRL</h3>
+    <div class="pricing-grid">
       <div class="price-card reveal">
         <div class="price-card-top"><div class="price-name">Înmatriculare SRL</div><div class="price-value">1.000 lei</div></div>
         <p class="price-desc">Pregătirea și depunerea dosarului complet de înființare. <strong>+ tarif ONRC.</strong></p>
       </div>
       <div class="price-card">
-        <div class="price-card-top"><div class="price-name">Înscriere mențiuni ONRC</div><div class="price-value">PFA: 350 lei · SRL: 550 lei</div></div>
-        <p class="price-desc">Suspendare și/sau reluare activitate, radiere firmă și alte mențiuni. Preț per operațiune. Pentru SRL: <strong>+ tarif ONRC.</strong></p>
+        <div class="price-card-top"><div class="price-name">Mențiuni ONRC — SRL</div><div class="price-value">550 lei</div></div>
+        <p class="price-desc">Suspendare și/sau reluare activitate și alte mențiuni. Preț per operațiune. <strong>+ tarif ONRC.</strong></p>
+      </div>
+      <div class="price-card">
+        <div class="price-card-top"><div class="price-name">Radiere SRL</div><div class="price-value">550 lei/etapă</div></div>
+        <p class="price-desc">Dizolvare și lichidare (2 etape). <strong>+ taxe Registrul Comerțului.</strong></p>
+      </div>
+    </div>
+
+    <h3 class="pricing-group-title">Servicii generale</h3>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-card-top"><div class="price-name">Consultanță de specialitate</div><div class="price-value">150 lei/oră</div></div>
+        <p class="price-desc">Consiliere personalizată pentru alegerea formei juridice, restructurări și orice aspecte legate de activitatea firmei.</p>
       </div>
       <div class="price-card">
         <div class="price-card-top"><div class="price-name">Dosare pentru avize (ISU / DSP / DSVSA / Primărie etc.)</div><div class="price-value">de la 300 lei</div></div>
         <p class="price-desc">Pregătirea dosarului per aviz solicitat. Prețul se negociază în funcție de complexitate.</p>
-      </div>
-      <div class="price-card">
-        <div class="price-card-top"><div class="price-name">Declarație Unică (Formular 212)</div><div class="price-value">200 lei</div></div>
-        <p class="price-desc">Completarea și depunerea Declarației Unice privind impozitul pe venit și contribuțiile sociale.</p>
       </div>
       <div class="price-card">
         <div class="price-card-top"><div class="price-name">Activități de secretariat</div><div class="price-value">150 lei/oră</div></div>
@@ -1234,31 +1261,52 @@ footer { background: var(--navy-dark); border-top: 1px solid rgba(225,195,64,0.1
     <div class="section-label">DÍJAK</div>
     <h2 class="section-title">Árlista</h2>
     <p class="section-subtitle">Tájékoztató jellegű árak — a végleges részletek a konzultáción kerülnek megállapításra</p>
+    <h3 class="pricing-group-title">EV / Î.I. / Î.F.</h3>
     <div class="pricing-grid">
-      <div class="price-card">
-        <div class="price-card-top"><div class="price-name">Szakmai tanácsadás</div><div class="price-value">150 lej/óra</div></div>
-        <p class="price-desc">Személyre szabott tanácsadás a jogi forma megválasztásához, átszervezésekhez és a cég működésével kapcsolatos kérdésekhez.</p>
-      </div>
       <div class="price-card featured reveal">
         <div class="price-badge">AJÁNLOTT</div>
         <div class="price-card-top"><div class="price-name">EV / II / IF bejegyzés</div><div class="price-value">550 lej</div></div>
         <p class="price-desc">A teljes bejegyzési dosszié elkészítése és benyújtása.</p>
       </div>
+      <div class="price-card">
+        <div class="price-card-top"><div class="price-name">ONRC bejegyzések — EV / Î.I. / Î.F.</div><div class="price-value">350 lej</div></div>
+        <p class="price-desc">Tevékenység felfüggesztése és/vagy folytatása és egyéb bejegyzések. Ár műveletenként.</p>
+      </div>
+      <div class="price-card">
+        <div class="price-card-top"><div class="price-name">EV / Î.I. / Î.F. törlése</div><div class="price-value">550 lej</div></div>
+        <p class="price-desc">Egyszerű eljárás, felszámolás nélkül.</p>
+      </div>
+      <div class="price-card">
+        <div class="price-card-top"><div class="price-name">Egységes Nyilatkozat (212-es nyomtatvány)</div><div class="price-value">200 lej</div></div>
+        <p class="price-desc">A jövedelemadóról és társadalombiztosítási járulékokról szóló Egységes Nyilatkozat kitöltése és benyújtása.</p>
+      </div>
+    </div>
+
+    <h3 class="pricing-group-title">Kft.</h3>
+    <div class="pricing-grid">
       <div class="price-card reveal">
         <div class="price-card-top"><div class="price-name">Kft. bejegyzés</div><div class="price-value">1.000 lej</div></div>
         <p class="price-desc">A teljes alapítási dosszié elkészítése és benyújtása. <strong>+ ONRC illeték.</strong></p>
       </div>
       <div class="price-card">
-        <div class="price-card-top"><div class="price-name">ONRC bejegyzések</div><div class="price-value">EV: 350 lej · Kft.: 550 lej</div></div>
-        <p class="price-desc">Tevékenység felfüggesztése és/vagy folytatása, cégtörlés és egyéb bejegyzések. Ár műveletenként. Kft. esetén: <strong>+ ONRC illeték.</strong></p>
+        <div class="price-card-top"><div class="price-name">ONRC bejegyzések — Kft.</div><div class="price-value">550 lej</div></div>
+        <p class="price-desc">Tevékenység felfüggesztése és/vagy folytatása és egyéb bejegyzések. Ár műveletenként. <strong>+ ONRC illeték.</strong></p>
+      </div>
+      <div class="price-card">
+        <div class="price-card-top"><div class="price-name">Kft. törlése</div><div class="price-value">550 lej/szakasz</div></div>
+        <p class="price-desc">Megszüntetés és felszámolás (2 szakasz). <strong>+ Cégbírósági illetékek.</strong></p>
+      </div>
+    </div>
+
+    <h3 class="pricing-group-title">Általános szolgáltatások</h3>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-card-top"><div class="price-name">Szakmai tanácsadás</div><div class="price-value">150 lej/óra</div></div>
+        <p class="price-desc">Személyre szabott tanácsadás a jogi forma megválasztásához, átszervezésekhez és a cég működésével kapcsolatos kérdésekhez.</p>
       </div>
       <div class="price-card">
         <div class="price-card-top"><div class="price-name">Dossziék engedélyekhez (ISU / DSP / DSVSA / Polgármesteri Hivatal stb.)</div><div class="price-value">300 lejtől</div></div>
         <p class="price-desc">A dosszié elkészítése engedélyenként. Az ár a bonyolultság függvényében egyeztethető.</p>
-      </div>
-      <div class="price-card">
-        <div class="price-card-top"><div class="price-name">Egységes Nyilatkozat (212-es nyomtatvány)</div><div class="price-value">200 lej</div></div>
-        <p class="price-desc">A jövedelemadóról és társadalombiztosítási járulékokról szóló Egységes Nyilatkozat kitöltése és benyújtása.</p>
       </div>
       <div class="price-card">
         <div class="price-card-top"><div class="price-name">Titkársági tevékenységek</div><div class="price-value">150 lej/óra</div></div>
