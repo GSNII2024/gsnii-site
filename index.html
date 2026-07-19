@@ -118,7 +118,8 @@ nav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.2); }
 .hero-tagline { font-size: 16px; color: rgba(255,255,255,0.65); font-style: italic; line-height: 1.5; margin-bottom: 1.5rem; }
 .hero-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 2rem; }
 .hero-pill { font-family: var(--font-body); font-size: 12.5px; color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.07); border: 1px solid rgba(225,195,64,0.25); padding: 6px 14px; border-radius: 20px; letter-spacing: 0.2px; }
-.hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 2.5rem; }
+.hero-ctas { display: flex; flex-direction: column; gap: 12px; margin-bottom: 2.5rem; align-items: flex-start; }
+.hero-ctas-row { display: flex; flex-wrap: wrap; gap: 12px; }
 .hero-cta { display: inline-flex; align-items: center; gap: 10px; background: var(--gold); color: var(--navy); padding: 14px 28px; border-radius: 8px; font-size: 14px; font-weight: 700; letter-spacing: 0.5px; text-decoration: none; transition: all 0.2s; box-shadow: 0 4px 20px rgba(225,195,64,0.3); min-height: 44px; }
 .hero-cta:hover { background: #f0d050; transform: translateY(-2px); }
 .hero-cta-secondary { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--white); padding: 14px 24px; border-radius: 8px; font-size: 14px; font-weight: 600; letter-spacing: 0.3px; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); transition: all 0.2s; min-height: 44px; }
@@ -191,7 +192,24 @@ nav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.2); }
 .news-body { padding: 1.5rem; }
 .news-title { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 0.5rem; line-height: 1.3; }
 .news-excerpt { font-size: 13.5px; color: var(--text-light); line-height: 1.6; }
-.news-empty { grid-column: 1/-1; text-align: center; padding: 3rem; color: var(--text-light); font-style: italic; }
+.service-card-clickable { cursor: pointer; }
+.service-card-clickable:hover { border-color: var(--gold); }
+.service-more { display: inline-block; margin-top: 0.9rem; font-size: 13px; font-weight: 700; color: var(--gold-dim); }
+.service-card-clickable:hover .service-more { color: var(--navy); }
+.service-detail-view { display: none; }
+.service-detail-view.open { display: block; }
+.service-detail-card { background: var(--white); border: 1px solid rgba(12,40,79,0.08); border-radius: var(--radius); padding: 2.25rem; box-shadow: var(--shadow); max-width: 700px; }
+.service-detail-card .service-icon { margin-bottom: 1.2rem; }
+.service-detail-title { font-family: var(--font-display); font-size: 26px; font-weight: 700; color: var(--navy); margin-bottom: 1rem; }
+.service-detail-desc { font-size: 15.5px; color: var(--text); line-height: 1.75; margin-bottom: 1rem; }
+.service-detail-placeholder { font-size: 13.5px; font-style: italic; color: var(--text-light); background: var(--cream); border-radius: 8px; padding: 0.9rem 1.1rem; }
+.services-grid.hidden-grid { display: none; }
+.news-article-detail.open { display: block; }
+.article-back-btn { background: none; border: 1px solid rgba(12,40,79,0.2); color: var(--navy); padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; margin-bottom: 1.25rem; transition: all 0.2s; }
+.article-back-btn:hover { background: var(--navy); color: var(--white); border-color: var(--navy); }
+.article-copy-btn { border-color: rgba(12,40,79,0.25); color: var(--navy); }
+.article-copy-btn.copied { background: var(--gold); color: var(--navy); border-color: var(--gold); }
+#teaser-caen-ro.hide-teaser, #teaser-caen-hu.hide-teaser { display: none; }
 
 /* News Alert card */
 .news-alert-card {
@@ -273,12 +291,15 @@ footer { background: var(--navy-dark); border-top: 1px solid rgba(225,195,64,0.1
   .services-grid, .pricing-grid { gap: 1.1rem; }
 }
 @media (max-width: 768px) {
+  .hero { align-items: flex-start; padding-top: 100px; min-height: auto; }
+  .hero-content { padding-top: 1.5rem; padding-bottom: 2.5rem; }
   .hero-content { grid-template-columns: 1fr; text-align: center; }
   .hero-logo-wrap { display: none; }
   .hero-eyebrow { justify-content: center; }
   .hero-divider { justify-content: center; }
   .hero-pills { justify-content: center; }
-  .hero-ctas { justify-content: center; }
+  .hero-ctas { align-items: center; }
+  .hero-ctas-row { justify-content: center; }
   .about-inner { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
   .admin-row { grid-template-columns: 1fr; }
@@ -372,14 +393,17 @@ footer { background: var(--navy-dark); border-top: 1px solid rgba(225,195,64,0.1
       </div>
       <p class="hero-tagline">Consultanță și operațiuni la Registrul Comerțului, în română și maghiară — de la Gál Norbert, fondatorul Gál S. Norbert Întreprindere Individuală.</p>
       <div class="hero-pills">
-        <a href="#infiintare-firme" onclick="navigateTo('servicii','infiintare-firme');return false;" class="hero-pill">Înființări firme</a>
-        <a href="#mentiuni-onrc" onclick="navigateTo('servicii','mentiuni-onrc');return false;" class="hero-pill">Modificări ONRC</a>
-        <a href="#declaratie-unica" onclick="navigateTo('servicii','declaratie-unica');return false;" class="hero-pill">Declarație Unică</a>
-        <a href="#consultanta" onclick="navigateTo('servicii','consultanta');return false;" class="hero-pill">Consultanță</a>
+        <a href="#infiintare-firme" onclick="openServiceDetail('infiintare-firme');return false;" class="hero-pill">Înființări firme</a>
+        <a href="#mentiuni-onrc" onclick="openServiceDetail('mentiuni-onrc');return false;" class="hero-pill">Modificări ONRC</a>
+        <a href="#declaratie-unica" onclick="openServiceDetail('declaratie-unica');return false;" class="hero-pill">Declarație Unică</a>
+        <a href="#consultanta" onclick="openServiceDetail('consultanta');return false;" class="hero-pill">Consultanță</a>
       </div>
       <div class="hero-ctas">
+        <div class="hero-ctas-row">
+          <a href="#preturi" onclick="navigateTo('preturi');return false;" class="hero-cta-secondary">Vezi prețurile</a>
+          <a href="#noutati" onclick="navigateTo('noutati');return false;" class="hero-cta-secondary">Noutăți</a>
+        </div>
         <a href="#contact" class="hero-cta">Solicită o consultanță</a>
-        <a href="#preturi" onclick="navigateTo('preturi');return false;" class="hero-cta-secondary">Vezi prețurile</a>
       </div>
     </div>
     <div class="hero-logo-wrap">
@@ -426,7 +450,7 @@ footer { background: var(--navy-dark); border-top: 1px solid rgba(225,195,64,0.1
   <div class="section-inner">
     <div class="section-label">CONTACT</div>
     <h2 class="section-title">Luați legătura cu mine</h2>
-    <p class="section-subtitle">Programare pe bază de programare — telefonic sau email</p>
+    <p class="section-subtitle">Lucrez pe bază de programare — telefonic sau email</p>
     <div class="contact-grid">
       <div>
         <div class="contact-info-item">
@@ -492,14 +516,17 @@ footer { background: var(--navy-dark); border-top: 1px solid rgba(225,195,64,0.1
       </div>
       <p class="hero-tagline">Tanácsadás és Cégbírósági ügyintézés, románul és magyarul — Gál Norberttől, a Gál S. Norbert Egyéni Vállalkozás alapítójától.</p>
       <div class="hero-pills">
-        <a href="#cegalapitas" onclick="navigateTo('servicii','cegalapitas');return false;" class="hero-pill">Cégalapítás</a>
-        <a href="#onrc-bejegyzes" onclick="navigateTo('servicii','onrc-bejegyzes');return false;" class="hero-pill">ONRC módosítások</a>
-        <a href="#adobevallas" onclick="navigateTo('servicii','adobevallas');return false;" class="hero-pill">Egységes Nyilatkozat</a>
-        <a href="#tanacsadas" onclick="navigateTo('servicii','tanacsadas');return false;" class="hero-pill">Tanácsadás</a>
+        <a href="#cegalapitas" onclick="openServiceDetail('cegalapitas');return false;" class="hero-pill">Cégalapítás</a>
+        <a href="#onrc-bejegyzes" onclick="openServiceDetail('onrc-bejegyzes');return false;" class="hero-pill">ONRC módosítások</a>
+        <a href="#adobevallas" onclick="openServiceDetail('adobevallas');return false;" class="hero-pill">Egységes Nyilatkozat</a>
+        <a href="#tanacsadas" onclick="openServiceDetail('tanacsadas');return false;" class="hero-pill">Tanácsadás</a>
       </div>
       <div class="hero-ctas">
+        <div class="hero-ctas-row">
+          <a href="#preturi" onclick="navigateTo('preturi');return false;" class="hero-cta-secondary">Árak megtekintése</a>
+          <a href="#noutati" onclick="navigateTo('noutati');return false;" class="hero-cta-secondary">Hírek</a>
+        </div>
         <a href="#kapcsolat" class="hero-cta">Kérjen tanácsadást</a>
-        <a href="#preturi" onclick="navigateTo('preturi');return false;" class="hero-cta-secondary">Árak megtekintése</a>
       </div>
     </div>
     <div class="hero-logo-wrap">
@@ -596,35 +623,119 @@ footer { background: var(--navy-dark); border-top: 1px solid rgba(225,195,64,0.1
     <h2 class="section-title">Servicii profesionale</h2>
     <p class="section-subtitle">Consultanță și operațiuni la Registrul Comerțului</p>
     <div class="services-grid">
-      <div class="service-card" id="infiintare-firme">
+      <div class="service-card service-card-clickable" id="infiintare-firme" onclick="openServiceDetail('infiintare-firme')" tabindex="0" role="button">
         <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
         <div class="service-name">Înființare firme</div>
         <p class="service-desc">Asist în procesul de înregistrare a unei noi firme la Registrul Comerțului — SRL, PFA, II, IF și alte forme juridice.</p>
+        <span class="service-more">Detalii →</span>
       </div>
-      <div class="service-card" id="modificari-firme">
+      <div class="service-card service-card-clickable" id="modificari-firme" onclick="openServiceDetail('modificari-firme')" tabindex="0" role="button">
         <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
         <div class="service-name">Modificări firme</div>
         <p class="service-desc">Procesez orice modificare a datelor firmei: schimbare sediu, administrator, obiect de activitate, capital social și altele.</p>
+        <span class="service-more">Detalii →</span>
       </div>
-      <div class="service-card" id="mentiuni-onrc">
+      <div class="service-card service-card-clickable" id="mentiuni-onrc" onclick="openServiceDetail('mentiuni-onrc')" tabindex="0" role="button">
         <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
         <div class="service-name">Mențiuni ONRC</div>
         <p class="service-desc">Depun și urmăresc toate tipurile de mențiuni la Oficiul Registrului Comerțului, inclusiv online prin portalul ONRC.</p>
+        <span class="service-more">Detalii →</span>
       </div>
-      <div class="service-card" id="consultanta">
+      <div class="service-card service-card-clickable" id="consultanta" onclick="openServiceDetail('consultanta')" tabindex="0" role="button">
         <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
         <div class="service-name">Consultanță</div>
         <p class="service-desc">Ofer consultanță specializată pentru alegerea formei juridice optime, restructurări și orice aspecte legate de activitatea firmei.</p>
+        <span class="service-more">Detalii →</span>
       </div>
-      <div class="service-card" id="declaratie-unica">
+      <div class="service-card service-card-clickable" id="declaratie-unica" onclick="openServiceDetail('declaratie-unica')" tabindex="0" role="button">
         <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
         <div class="service-name">Declarație Unică</div>
         <p class="service-desc">Asist persoanele fizice în completarea și depunerea Declarației Unice privind impozitul pe venit și contribuțiile sociale.</p>
+        <span class="service-more">Detalii →</span>
       </div>
-      <div class="service-card" id="radiere-firme">
+      <div class="service-card service-card-clickable" id="radiere-firme" onclick="openServiceDetail('radiere-firme')" tabindex="0" role="button">
         <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
         <div class="service-name">Radiere firme</div>
         <p class="service-desc">Gestionez întregul proces de radiere a firmei din Registrul Comerțului, inclusiv lichidarea voluntară și dizolvarea.</p>
+        <span class="service-more">Detalii →</span>
+      </div>
+    </div>
+    <div class="service-detail-view" id="detail-infiintare-firme">
+      <button class="article-back-btn" onclick="closeServiceDetail()">← Înapoi la servicii</button>
+      <div class="service-detail-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <h3 class="service-detail-title">Înființare firme</h3>
+        <p class="service-detail-desc">Asist în procesul de înregistrare a unei noi firme la Registrul Comerțului — SRL, PFA, II, IF și alte forme juridice.</p>
+        <p class="service-detail-placeholder">Descriere detaliată în curs de completare — reveniți curând pentru informații extinse despre acest serviciu (etape, documente necesare, durată estimată).</p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:1.5rem;">
+          <a href="#contact" class="hero-cta" onclick="navigateTo('home','contact')">Solicită acest serviciu</a>
+          <button class="hero-cta-secondary article-copy-btn" onclick="copyLink('infiintare-firme', this)">🔗 Copiază linkul</button>
+        </div>
+      </div>
+    </div>
+    <div class="service-detail-view" id="detail-modificari-firme">
+      <button class="article-back-btn" onclick="closeServiceDetail()">← Înapoi la servicii</button>
+      <div class="service-detail-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
+        <h3 class="service-detail-title">Modificări firme</h3>
+        <p class="service-detail-desc">Procesez orice modificare a datelor firmei: schimbare sediu, administrator, obiect de activitate, capital social și altele.</p>
+        <p class="service-detail-placeholder">Descriere detaliată în curs de completare — reveniți curând pentru informații extinse despre acest serviciu (etape, documente necesare, durată estimată).</p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:1.5rem;">
+          <a href="#contact" class="hero-cta" onclick="navigateTo('home','contact')">Solicită acest serviciu</a>
+          <button class="hero-cta-secondary article-copy-btn" onclick="copyLink('modificari-firme', this)">🔗 Copiază linkul</button>
+        </div>
+      </div>
+    </div>
+    <div class="service-detail-view" id="detail-mentiuni-onrc">
+      <button class="article-back-btn" onclick="closeServiceDetail()">← Înapoi la servicii</button>
+      <div class="service-detail-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        <h3 class="service-detail-title">Mențiuni ONRC</h3>
+        <p class="service-detail-desc">Depun și urmăresc toate tipurile de mențiuni la Oficiul Registrului Comerțului, inclusiv online prin portalul ONRC.</p>
+        <p class="service-detail-placeholder">Descriere detaliată în curs de completare — reveniți curând pentru informații extinse despre acest serviciu (etape, documente necesare, durată estimată).</p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:1.5rem;">
+          <a href="#contact" class="hero-cta" onclick="navigateTo('home','contact')">Solicită acest serviciu</a>
+          <button class="hero-cta-secondary article-copy-btn" onclick="copyLink('mentiuni-onrc', this)">🔗 Copiază linkul</button>
+        </div>
+      </div>
+    </div>
+    <div class="service-detail-view" id="detail-consultanta">
+      <button class="article-back-btn" onclick="closeServiceDetail()">← Înapoi la servicii</button>
+      <div class="service-detail-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+        <h3 class="service-detail-title">Consultanță</h3>
+        <p class="service-detail-desc">Ofer consultanță specializată pentru alegerea formei juridice optime, restructurări și orice aspecte legate de activitatea firmei.</p>
+        <p class="service-detail-placeholder">Descriere detaliată în curs de completare — reveniți curând pentru informații extinse despre acest serviciu (etape, documente necesare, durată estimată).</p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:1.5rem;">
+          <a href="#contact" class="hero-cta" onclick="navigateTo('home','contact')">Solicită acest serviciu</a>
+          <button class="hero-cta-secondary article-copy-btn" onclick="copyLink('consultanta', this)">🔗 Copiază linkul</button>
+        </div>
+      </div>
+    </div>
+    <div class="service-detail-view" id="detail-declaratie-unica">
+      <button class="article-back-btn" onclick="closeServiceDetail()">← Înapoi la servicii</button>
+      <div class="service-detail-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <h3 class="service-detail-title">Declarație Unică</h3>
+        <p class="service-detail-desc">Asist persoanele fizice în completarea și depunerea Declarației Unice privind impozitul pe venit și contribuțiile sociale.</p>
+        <p class="service-detail-placeholder">Descriere detaliată în curs de completare — reveniți curând pentru informații extinse despre acest serviciu (etape, documente necesare, durată estimată).</p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:1.5rem;">
+          <a href="#contact" class="hero-cta" onclick="navigateTo('home','contact')">Solicită acest serviciu</a>
+          <button class="hero-cta-secondary article-copy-btn" onclick="copyLink('declaratie-unica', this)">🔗 Copiază linkul</button>
+        </div>
+      </div>
+    </div>
+    <div class="service-detail-view" id="detail-radiere-firme">
+      <button class="article-back-btn" onclick="closeServiceDetail()">← Înapoi la servicii</button>
+      <div class="service-detail-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <h3 class="service-detail-title">Radiere firme</h3>
+        <p class="service-detail-desc">Gestionez întregul proces de radiere a firmei din Registrul Comerțului, inclusiv lichidarea voluntară și dizolvarea.</p>
+        <p class="service-detail-placeholder">Descriere detaliată în curs de completare — reveniți curând pentru informații extinse despre acest serviciu (etape, documente necesare, durată estimată).</p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:1.5rem;">
+          <a href="#contact" class="hero-cta" onclick="navigateTo('home','contact')">Solicită acest serviciu</a>
+          <button class="hero-cta-secondary article-copy-btn" onclick="copyLink('radiere-firme', this)">🔗 Copiază linkul</button>
+        </div>
       </div>
     </div>
   </div>
@@ -654,35 +765,119 @@ footer { background: var(--navy-dark); border-top: 1px solid rgba(225,195,64,0.1
     <h2 class="section-title">Professzionális szolgáltatások</h2>
     <p class="section-subtitle">Tanácsadás és Cégnyilvántartási műveletek</p>
     <div class="services-grid">
-      <div class="service-card" id="cegalapitas">
+      <div class="service-card service-card-clickable" id="cegalapitas" onclick="openServiceDetail('cegalapitas')" tabindex="0" role="button">
         <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
         <div class="service-name">Cégalapítás</div>
         <p class="service-desc">Segítek az új cég bejegyzésében a Cégbíróságon — Kft., EV, II, IF és egyéb jogi formák esetén.</p>
+        <span class="service-more">Részletek →</span>
       </div>
-      <div class="service-card" id="cegmodositas">
+      <div class="service-card service-card-clickable" id="cegmodositas" onclick="openServiceDetail('cegmodositas')" tabindex="0" role="button">
         <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
         <div class="service-name">Cégmódosítás</div>
         <p class="service-desc">Feldolgozom a cég adatainak minden módosítását: székhely, ügyvezető, tevékenységi kör, alaptőke változtatás és egyebek.</p>
+        <span class="service-more">Részletek →</span>
       </div>
-      <div class="service-card" id="onrc-bejegyzes">
+      <div class="service-card service-card-clickable" id="onrc-bejegyzes" onclick="openServiceDetail('onrc-bejegyzes')" tabindex="0" role="button">
         <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
         <div class="service-name">ONRC bejegyzés</div>
         <p class="service-desc">Benyújtok és nyomon követek minden típusú bejegyzést a Cégbíróságon, beleértve az online ONRC portálon keresztülieket is.</p>
+        <span class="service-more">Részletek →</span>
       </div>
-      <div class="service-card" id="tanacsadas">
+      <div class="service-card service-card-clickable" id="tanacsadas" onclick="openServiceDetail('tanacsadas')" tabindex="0" role="button">
         <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
         <div class="service-name">Tanácsadás</div>
         <p class="service-desc">Szakosodott tanácsadást nyújtok az optimális jogi forma megválasztásában, átszervezésekben és a cég működésével kapcsolatos kérdésekben.</p>
+        <span class="service-more">Részletek →</span>
       </div>
-      <div class="service-card" id="adobevallas">
+      <div class="service-card service-card-clickable" id="adobevallas" onclick="openServiceDetail('adobevallas')" tabindex="0" role="button">
         <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
         <div class="service-name">Adóbevallás</div>
         <p class="service-desc">Segítek a magánszemélyeknek a jövedelemadóról és társadalombiztosítási járulékokról szóló Egységes Nyilatkozat kitöltésében és benyújtásában.</p>
+        <span class="service-more">Részletek →</span>
       </div>
-      <div class="service-card" id="cegbeszuntetes">
+      <div class="service-card service-card-clickable" id="cegbeszuntetes" onclick="openServiceDetail('cegbeszuntetes')" tabindex="0" role="button">
         <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
         <div class="service-name">Cégbeszüntetés</div>
         <p class="service-desc">Kezelem a cég törlésének teljes folyamatát a Cégbíróságból, beleértve az önkéntes felszámolást és a megszüntetést.</p>
+        <span class="service-more">Részletek →</span>
+      </div>
+    </div>
+    <div class="service-detail-view" id="detail-cegalapitas">
+      <button class="article-back-btn" onclick="closeServiceDetail()">← Vissza a szolgáltatásokhoz</button>
+      <div class="service-detail-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <h3 class="service-detail-title">Cégalapítás</h3>
+        <p class="service-detail-desc">Segítek az új cég bejegyzésében a Cégbíróságon — Kft., EV, II, IF és egyéb jogi formák esetén.</p>
+        <p class="service-detail-placeholder">Részletes leírás hamarosan — térjen vissza bővebb információkért erről a szolgáltatásról (lépések, szükséges dokumentumok, becsült időtartam).</p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:1.5rem;">
+          <a href="#kapcsolat" class="hero-cta" onclick="navigateTo('home','kapcsolat')">Igényelje ezt a szolgáltatást</a>
+          <button class="hero-cta-secondary article-copy-btn" onclick="copyLink('cegalapitas', this)">🔗 Link másolása</button>
+        </div>
+      </div>
+    </div>
+    <div class="service-detail-view" id="detail-cegmodositas">
+      <button class="article-back-btn" onclick="closeServiceDetail()">← Vissza a szolgáltatásokhoz</button>
+      <div class="service-detail-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
+        <h3 class="service-detail-title">Cégmódosítás</h3>
+        <p class="service-detail-desc">Feldolgozom a cég adatainak minden módosítását: székhely, ügyvezető, tevékenységi kör, alaptőke változtatás és egyebek.</p>
+        <p class="service-detail-placeholder">Részletes leírás hamarosan — térjen vissza bővebb információkért erről a szolgáltatásról (lépések, szükséges dokumentumok, becsült időtartam).</p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:1.5rem;">
+          <a href="#kapcsolat" class="hero-cta" onclick="navigateTo('home','kapcsolat')">Igényelje ezt a szolgáltatást</a>
+          <button class="hero-cta-secondary article-copy-btn" onclick="copyLink('cegmodositas', this)">🔗 Link másolása</button>
+        </div>
+      </div>
+    </div>
+    <div class="service-detail-view" id="detail-onrc-bejegyzes">
+      <button class="article-back-btn" onclick="closeServiceDetail()">← Vissza a szolgáltatásokhoz</button>
+      <div class="service-detail-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        <h3 class="service-detail-title">ONRC bejegyzés</h3>
+        <p class="service-detail-desc">Benyújtok és nyomon követek minden típusú bejegyzést a Cégbíróságon, beleértve az online ONRC portálon keresztülieket is.</p>
+        <p class="service-detail-placeholder">Részletes leírás hamarosan — térjen vissza bővebb információkért erről a szolgáltatásról (lépések, szükséges dokumentumok, becsült időtartam).</p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:1.5rem;">
+          <a href="#kapcsolat" class="hero-cta" onclick="navigateTo('home','kapcsolat')">Igényelje ezt a szolgáltatást</a>
+          <button class="hero-cta-secondary article-copy-btn" onclick="copyLink('onrc-bejegyzes', this)">🔗 Link másolása</button>
+        </div>
+      </div>
+    </div>
+    <div class="service-detail-view" id="detail-tanacsadas">
+      <button class="article-back-btn" onclick="closeServiceDetail()">← Vissza a szolgáltatásokhoz</button>
+      <div class="service-detail-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+        <h3 class="service-detail-title">Tanácsadás</h3>
+        <p class="service-detail-desc">Szakosodott tanácsadást nyújtok az optimális jogi forma megválasztásában, átszervezésekben és a cég működésével kapcsolatos kérdésekben.</p>
+        <p class="service-detail-placeholder">Részletes leírás hamarosan — térjen vissza bővebb információkért erről a szolgáltatásról (lépések, szükséges dokumentumok, becsült időtartam).</p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:1.5rem;">
+          <a href="#kapcsolat" class="hero-cta" onclick="navigateTo('home','kapcsolat')">Igényelje ezt a szolgáltatást</a>
+          <button class="hero-cta-secondary article-copy-btn" onclick="copyLink('tanacsadas', this)">🔗 Link másolása</button>
+        </div>
+      </div>
+    </div>
+    <div class="service-detail-view" id="detail-adobevallas">
+      <button class="article-back-btn" onclick="closeServiceDetail()">← Vissza a szolgáltatásokhoz</button>
+      <div class="service-detail-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <h3 class="service-detail-title">Adóbevallás</h3>
+        <p class="service-detail-desc">Segítek a magánszemélyeknek a jövedelemadóról és társadalombiztosítási járulékokról szóló Egységes Nyilatkozat kitöltésében és benyújtásában.</p>
+        <p class="service-detail-placeholder">Részletes leírás hamarosan — térjen vissza bővebb információkért erről a szolgáltatásról (lépések, szükséges dokumentumok, becsült időtartam).</p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:1.5rem;">
+          <a href="#kapcsolat" class="hero-cta" onclick="navigateTo('home','kapcsolat')">Igényelje ezt a szolgáltatást</a>
+          <button class="hero-cta-secondary article-copy-btn" onclick="copyLink('adobevallas', this)">🔗 Link másolása</button>
+        </div>
+      </div>
+    </div>
+    <div class="service-detail-view" id="detail-cegbeszuntetes">
+      <button class="article-back-btn" onclick="closeServiceDetail()">← Vissza a szolgáltatásokhoz</button>
+      <div class="service-detail-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <h3 class="service-detail-title">Cégbeszüntetés</h3>
+        <p class="service-detail-desc">Kezelem a cég törlésének teljes folyamatát a Cégbíróságból, beleértve az önkéntes felszámolást és a megszüntetést.</p>
+        <p class="service-detail-placeholder">Részletes leírás hamarosan — térjen vissza bővebb információkért erről a szolgáltatásról (lépések, szükséges dokumentumok, becsült időtartam).</p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:1.5rem;">
+          <a href="#kapcsolat" class="hero-cta" onclick="navigateTo('home','kapcsolat')">Igényelje ezt a szolgáltatást</a>
+          <button class="hero-cta-secondary article-copy-btn" onclick="copyLink('cegbeszuntetes', this)">🔗 Link másolása</button>
+        </div>
       </div>
     </div>
   </div>
@@ -848,7 +1043,7 @@ footer { background: var(--navy-dark); border-top: 1px solid rgba(225,195,64,0.1
     <h2 class="section-title">Ultimele noutăți</h2>
     <p class="section-subtitle">Informații utile și actualizări legislative</p>
 
-    <div class="news-alert-card reveal">
+    <div class="news-alert-card reveal" id="teaser-caen-ro">
       <div class="news-alert-top">
         <div class="news-alert-icon">
           <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
@@ -862,25 +1057,50 @@ footer { background: var(--navy-dark); border-top: 1px solid rgba(225,195,64,0.1
         </div>
       </div>
       <div class="news-alert-body">
-        <p>Ai firmă, PFA, Întreprindere Individuală (Î.I.) sau Întreprindere Familială (Î.F.)?</p>
-        <p>Până la</p>
-        <div class="news-alert-date">
-          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          25 septembrie 2026
-        </div>
-        <p>este necesară actualizarea codurilor CAEN conform noii clasificări CAEN Rev. 3. Verificarea și actualizarea din timp te poate ajuta să eviți aglomerația din apropierea termenului limită și să ai documentația pregătită corespunzător.</p>
-        <p style="font-weight:700;color:var(--navy);margin-bottom:0.6rem">Ofer sprijin pentru:</p>
-        <ul class="news-alert-checklist">
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Verificarea codurilor CAEN existente</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Identificarea corespondentului în noua clasificare</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Întocmirea documentației necesare</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Depunerea și urmărirea dosarului la Registrul Comerțului</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Consultanță personalizată pe tot parcursul procedurii</li>
-        </ul>
-        <p class="news-alert-note">Nu lăsa actualizarea pe ultima sută de metri! Contactează-mă din timp și mă ocup de toate formalitățile, astfel încât tu să te poți concentra pe dezvoltarea afacerii tale.</p>
+        <p>Ai firmă, PFA, Î.I. sau Î.F.? Până la 25 septembrie 2026 este necesară actualizarea codurilor CAEN conform noii clasificări CAEN Rev. 3. Verificarea din timp te ajută să eviți aglomerația de ultim moment.</p>
       </div>
-      <a href="#contact" class="hero-cta">Solicită consultanță</a>
-      <div class="news-alert-langs">Servicii disponibile în limba română și maghiară.</div>
+      <button class="hero-cta" onclick="openArticle('caen')">Citește tot articolul →</button>
+    </div>
+
+    <div class="news-article-detail" id="art-caen-ro">
+      <button class="article-back-btn" onclick="closeArticle()">← Înapoi la noutăți</button>
+      <div class="news-alert-card">
+        <div class="news-alert-top">
+          <div class="news-alert-icon">
+            <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <div>
+            <div class="news-alert-badges">
+              <span class="news-alert-badge badge-new">NOU</span>
+              <span class="news-alert-badge badge-legal">ACTUALIZARE LEGISLATIVĂ</span>
+            </div>
+            <div class="news-alert-title">Actualizarea codurilor CAEN — termen limită 25 septembrie 2026</div>
+          </div>
+        </div>
+        <div class="news-alert-body">
+          <p>Ai firmă, PFA, Întreprindere Individuală (Î.I.) sau Întreprindere Familială (Î.F.)?</p>
+          <p>Până la</p>
+          <div class="news-alert-date">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            25 septembrie 2026
+          </div>
+          <p>este necesară actualizarea codurilor CAEN conform noii clasificări CAEN Rev. 3. Verificarea și actualizarea din timp te poate ajuta să eviți aglomerația din apropierea termenului limită și să ai documentația pregătită corespunzător.</p>
+          <p style="font-weight:700;color:var(--navy);margin-bottom:0.6rem">Ofer sprijin pentru:</p>
+          <ul class="news-alert-checklist">
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Verificarea codurilor CAEN existente</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Identificarea corespondentului în noua clasificare</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Întocmirea documentației necesare</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Depunerea și urmărirea dosarului la Registrul Comerțului</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Consultanță personalizată pe tot parcursul procedurii</li>
+          </ul>
+          <p class="news-alert-note">Nu lăsa actualizarea pe ultima sută de metri! Contactează-mă din timp și mă ocup de toate formalitățile, astfel încât tu să te poți concentra pe dezvoltarea afacerii tale.</p>
+        </div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+          <a href="#contact" class="hero-cta" onclick="navigateTo('home','contact')">Solicită consultanță</a>
+          <button class="hero-cta-secondary article-copy-btn" onclick="copyArticleLink('caen', this)">🔗 Copiază linkul</button>
+        </div>
+        <div class="news-alert-langs">Servicii disponibile în limba română și maghiară.</div>
+      </div>
     </div>
 
     <div class="admin-toggle">
@@ -926,7 +1146,7 @@ footer { background: var(--navy-dark); border-top: 1px solid rgba(225,195,64,0.1
     <h2 class="section-title">Legújabb hírek</h2>
     <p class="section-subtitle">Hasznos információk és jogszabályi változások</p>
 
-    <div class="news-alert-card reveal">
+    <div class="news-alert-card reveal" id="teaser-caen-hu">
       <div class="news-alert-top">
         <div class="news-alert-icon">
           <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
@@ -940,25 +1160,50 @@ footer { background: var(--navy-dark); border-top: 1px solid rgba(225,195,64,0.1
         </div>
       </div>
       <div class="news-alert-body">
-        <p>Van cége, EV-je, Egyéni Vállalkozása (Î.I.) vagy Családi Vállalkozása (Î.F.)?</p>
-        <p>Eddig:</p>
-        <div class="news-alert-date">
-          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          2026. szeptember 25.
-        </div>
-        <p>szükséges a CAEN kódok frissítése az új CAEN Rev. 3 osztályozás szerint. Az időben történő ellenőrzés és frissítés segít elkerülni a határidő közeledtével kialakuló torlódást, és biztosítja, hogy a dokumentáció megfelelően elő legyen készítve.</p>
-        <p style="font-weight:700;color:var(--navy);margin-bottom:0.6rem">Segítséget nyújtok az alábbiakban:</p>
-        <ul class="news-alert-checklist">
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>A meglévő CAEN kódok ellenőrzése</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Az új osztályozásban megfelelő kód azonosítása</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>A szükséges dokumentáció összeállítása</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>A dosszié benyújtása és nyomon követése a Cégbíróságon</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Személyre szabott tanácsadás a teljes folyamat során</li>
-        </ul>
-        <p class="news-alert-note">Ne hagyja az utolsó pillanatra! Keressen meg időben, és én elintézem az összes formalitást, hogy Ön a vállalkozása fejlesztésére összpontosíthasson.</p>
+        <p>Van cége, EV-je, Î.I.-je vagy Î.F.-je? 2026. szeptember 25-ig szükséges a CAEN kódok frissítése az új CAEN Rev. 3 osztályozás szerint. Az időben történő ellenőrzés segít elkerülni a torlódást.</p>
       </div>
-      <a href="#kapcsolat" class="hero-cta">Tanácsadást kérek</a>
-      <div class="news-alert-langs">Szolgáltatások románul és magyarul is elérhetők.</div>
+      <button class="hero-cta" onclick="openArticle('caen')">Teljes cikk elolvasása →</button>
+    </div>
+
+    <div class="news-article-detail" id="art-caen-hu">
+      <button class="article-back-btn" onclick="closeArticle()">← Vissza a hírekhez</button>
+      <div class="news-alert-card">
+        <div class="news-alert-top">
+          <div class="news-alert-icon">
+            <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <div>
+            <div class="news-alert-badges">
+              <span class="news-alert-badge badge-new">ÚJ</span>
+              <span class="news-alert-badge badge-legal">JOGSZABÁLYI FRISSÍTÉS</span>
+            </div>
+            <div class="news-alert-title">A CAEN kódok frissítése — határidő 2026. szeptember 25.</div>
+          </div>
+        </div>
+        <div class="news-alert-body">
+          <p>Van cége, EV-je, Egyéni Vállalkozása (Î.I.) vagy Családi Vállalkozása (Î.F.)?</p>
+          <p>Eddig:</p>
+          <div class="news-alert-date">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            2026. szeptember 25.
+          </div>
+          <p>szükséges a CAEN kódok frissítése az új CAEN Rev. 3 osztályozás szerint. Az időben történő ellenőrzés és frissítés segít elkerülni a határidő közeledtével kialakuló torlódást, és biztosítja, hogy a dokumentáció megfelelően elő legyen készítve.</p>
+          <p style="font-weight:700;color:var(--navy);margin-bottom:0.6rem">Segítséget nyújtok az alábbiakban:</p>
+          <ul class="news-alert-checklist">
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>A meglévő CAEN kódok ellenőrzése</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Az új osztályozásban megfelelő kód azonosítása</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>A szükséges dokumentáció összeállítása</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>A dosszié benyújtása és nyomon követése a Cégbíróságon</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Személyre szabott tanácsadás a teljes folyamat során</li>
+          </ul>
+          <p class="news-alert-note">Ne hagyja az utolsó pillanatra! Keressen meg időben, és én elintézem az összes formalitást, hogy Ön a vállalkozása fejlesztésére összpontosíthasson.</p>
+        </div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+          <a href="#kapcsolat" class="hero-cta" onclick="navigateTo('home','kapcsolat')">Tanácsadást kérek</a>
+          <button class="hero-cta-secondary article-copy-btn" onclick="copyArticleLink('caen', this)">🔗 Link másolása</button>
+        </div>
+        <div class="news-alert-langs">Szolgáltatások románul és magyarul is elérhetők.</div>
+      </div>
     </div>
 
     <div class="news-grid" id="newsGrid-hu"></div>
@@ -1033,6 +1278,63 @@ function navigateTo(page, anchorId) {
 }
 function goDespre() { navigateTo('home', currentLang === 'ro' ? 'despre' : 'rolam'); }
 function goContact() { navigateTo('home', currentLang === 'ro' ? 'contact' : 'kapcsolat'); }
+function openServiceDetail(id) {
+  navigateTo('servicii');
+  document.querySelectorAll('.services-grid').forEach(function(el) { el.classList.add('hidden-grid'); });
+  document.querySelectorAll('.service-detail-view').forEach(function(el) { el.classList.remove('open'); });
+  var detail = document.getElementById('detail-' + id);
+  if (detail) { detail.classList.add('open'); detail.scrollIntoView({ block: 'start' }); }
+  try { history.replaceState(null, '', '#' + id); } catch(e) {}
+}
+function closeServiceDetail() {
+  document.querySelectorAll('.services-grid').forEach(function(el) { el.classList.remove('hidden-grid'); });
+  document.querySelectorAll('.service-detail-view').forEach(function(el) { el.classList.remove('open'); });
+  navigateTo('servicii');
+}
+function copyLink(hash, btnEl) {
+  var url = location.origin + location.pathname + '#' + hash;
+  var done = function() {
+    var original = btnEl.textContent;
+    btnEl.textContent = '✓ Link copiat';
+    btnEl.classList.add('copied');
+    setTimeout(function() { btnEl.textContent = original; btnEl.classList.remove('copied'); }, 2000);
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(url).then(done).catch(function() { prompt('Copiază linkul:', url); });
+  } else {
+    prompt('Copiază linkul:', url);
+  }
+}
+
+// Public, shareable news articles (teaser + full detail view)
+function openArticle(slug) {
+  navigateTo('noutati');
+  var suffix = currentLang === 'ro' ? '-ro' : '-hu';
+  var teaser = document.getElementById('teaser-' + slug + suffix);
+  var detail = document.getElementById('art-' + slug + suffix);
+  if (teaser) teaser.classList.add('hide-teaser');
+  if (detail) { detail.classList.add('open'); detail.scrollIntoView({ block: 'start' }); }
+  try { history.replaceState(null, '', '#art-' + slug); } catch(e) {}
+}
+function closeArticle() {
+  document.querySelectorAll('.news-article-detail').forEach(function(el) { el.classList.remove('open'); });
+  document.querySelectorAll('[id^="teaser-"]').forEach(function(el) { el.classList.remove('hide-teaser'); });
+  navigateTo('noutati');
+}
+function copyArticleLink(slug, btnEl) {
+  var url = location.origin + location.pathname + '#art-' + slug;
+  var done = function() {
+    var original = btnEl.textContent;
+    btnEl.textContent = '✓ Link copiat';
+    btnEl.classList.add('copied');
+    setTimeout(function() { btnEl.textContent = original; btnEl.classList.remove('copied'); }, 2000);
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(url).then(done).catch(function() { prompt('Copiază linkul:', url); });
+  } else {
+    prompt('Copiază linkul:', url);
+  }
+}
 
 function toggleMobileMenu() {
   document.getElementById('hamburgerBtn').classList.toggle('active');
@@ -1134,7 +1436,8 @@ renderNews();
                   noutati:'noutati', hirek:'noutati', despre:'home', rolam:'home', contact:'home', kapcsolat:'home' };
   var hash = window.location.hash.replace('#', '');
   if (hash) {
-    if (serviceAnchors.indexOf(hash) !== -1) { navigateTo('servicii', hash); }
+    if (hash.indexOf('art-') === 0) { openArticle(hash.substring(4)); }
+    else if (serviceAnchors.indexOf(hash) !== -1) { openServiceDetail(hash); }
     else if (pageMap[hash]) { navigateTo(pageMap[hash], hash); }
     else { navigateTo('home'); }
   } else {
