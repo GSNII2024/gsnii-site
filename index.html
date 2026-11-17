@@ -463,7 +463,35 @@ footer { padding: 3rem 2rem; }
 }
 </style>
 <style id="mobfix">@media(max-width:768px){.hero-content{grid-template-columns:1fr!important;padding:5rem 1.25rem 3.5rem!important;gap:0!important}.hero-name{font-size:clamp(2.1rem,9.5vw,2.6rem)!important;text-wrap:balance;letter-spacing:-.5px!important}.hero-pills{gap:6px!important;margin-bottom:1.4rem!important}.hero-pills>*{font-size:12.5px!important;padding:7px 12px!important}}</style><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"GÁL S. NORBERT Î.I.","alternateName":["GÁL S. NORBERT ÎNTREPRINDERE INDIVIDUALĂ","GSNII"],"url":"https://gsnii.ro/"}</script>
-</head>
+<style>.hero-pill-caen{background:var(--gold)!important;color:var(--navy-dark)!important;border-color:var(--gold)!important;font-weight:700!important}.hero-pill-caen:hover{filter:brightness(1.08)}
+.svc-badge{display:inline-block;background:var(--gold-light);border:1px solid var(--gold-dim);color:var(--navy);font-size:12.5px;font-weight:700;padding:3px 11px;border-radius:20px;margin-bottom:10px;letter-spacing:.2px}
+.service-card:has(.svc-badge) .service-name{font-size:1.15em}</style><style>.caen-wrap{position:relative;z-index:5;max-width:1180px;margin:-64px auto 0;padding:0 24px}
+.caen-card{display:flex;align-items:center;gap:26px;background:#fff;border-radius:18px;padding:22px 26px;text-decoration:none;color:var(--navy);box-shadow:0 18px 50px rgba(8,26,53,.22);border:1px solid rgba(12,40,79,.08);transition:transform .2s}
+.caen-card:hover{transform:translateY(-3px)}
+.caen-date{flex:0 0 auto;background:var(--navy);color:#fff;border-radius:14px;padding:14px 18px;text-align:center;border-bottom:4px solid var(--gold);min-width:128px}
+.caen-date b{display:block;font-size:21px;color:var(--gold);letter-spacing:.3px}.caen-date span{font-size:12px;text-transform:uppercase;letter-spacing:1.2px;opacity:.8}
+.caen-body{flex:1}.caen-title{font-size:21px;font-weight:700;margin-bottom:4px}.caen-body p{margin:0;font-size:15px;line-height:1.55;color:var(--text-light,#55627a)}
+.caen-btn{background:var(--gold);color:var(--navy-dark);font-weight:700;font-size:15px;padding:12px 22px;border-radius:10px;white-space:nowrap}
+.caen-card:hover .caen-btn{filter:brightness(1.07)}
+@media(max-width:768px){.caen-wrap{margin-top:-36px;padding:0 16px}.caen-card{flex-direction:column;align-items:stretch;gap:14px;padding:18px}.caen-date{display:flex;justify-content:space-between;align-items:center;text-align:left;padding:10px 16px}.caen-date b{font-size:19px}.caen-btn{text-align:center}}</style><style>.d-short{display:none}
+@media(max-width:768px){.d-full{display:none}.d-short{display:inline}
+.caen-wrap{margin-top:-28px;padding:0 14px}
+.caen-card{gap:10px;padding:14px 16px;border-radius:14px}
+.caen-date{align-self:flex-start;background:var(--gold-light);color:var(--navy);border:1px solid var(--gold-dim);border-bottom-width:1px;border-radius:20px;padding:3px 11px;display:inline-flex;gap:6px;align-items:baseline;min-width:0}
+.caen-date b{font-size:13px;color:var(--navy)}.caen-date span{font-size:11px;opacity:.85}
+.caen-title{font-size:17px;margin-bottom:2px}.caen-body p{font-size:13.5px;line-height:1.45}
+.caen-btn{font-size:14px;padding:10px 16px}}</style><style>@media(max-width:768px){
+.hero-name{font-size:clamp(1.7rem,7.4vw,2rem)!important}
+.hero-eyebrow{font-size:12px!important}
+.hero-tagline{font-size:13.5px!important;line-height:1.5!important}
+.tag-hl{font-size:13px;padding:3px 11px}
+.hero-pill{font-size:12px!important;padding:6px 12px!important}
+.hero-ctas .hero-cta,.hero-cta{font-size:14.5px!important;padding:12px 24px!important}
+.hero-ctas a:not(.hero-cta),.hero-ctas .hero-cta-ghost{font-size:13px!important;padding:9px 16px!important}
+.caen-card{padding:12px 14px;gap:8px}
+.caen-date{padding:2px 10px}.caen-date b{font-size:12px}.caen-date span{font-size:10px}
+.caen-title{font-size:15px}.caen-body p{font-size:12.5px;line-height:1.4}
+.caen-btn{font-size:13px;padding:9px 14px}}</style><style>.caen-date span{display:block;margin-bottom:3px}@media(max-width:768px){.caen-date span{display:inline;margin-bottom:0}}</style></head>
 <body>
 <body>
 
@@ -519,11 +547,12 @@ footer { padding: 3rem 2rem; }
         <div class="hero-divider-dot"></div>
         <div class="hero-divider-line"></div>
       </div>
-      <p class="hero-tagline">Expertiză și sprijin la fiecare pas. Consultanță și operațiuni la Registrul Comerțului, în română și maghiară.</p>
+      <p class="hero-tagline"><span class="tag-hl">Expertiză și sprijin la fiecare pas.</span><br>Consultanță și operațiuni la Registrul Comerțului, în română și maghiară.</p>
       <div class="hero-pills">
         <a href="#infiintare-pfa" onclick="openServiceDetail('infiintare-pfa');return false;" class="hero-pill">Înființări firme</a>
         <a href="#mentiuni-pfa" onclick="openServiceDetail('mentiuni-pfa');return false;" class="hero-pill">Modificări ONRC</a>
         <a href="#declaratie-unica" onclick="openServiceDetail('declaratie-unica');return false;" class="hero-pill">Declarație Unică</a>
+        <a href="/actualizare-coduri-caen.html" class="hero-pill hero-pill-caen">Actualizare CAEN</a>
         <a href="#consultanta" onclick="openServiceDetail('consultanta');return false;" class="hero-pill">Consultanță</a>
       </div>
       <div class="hero-ctas">
@@ -544,6 +573,13 @@ footer { padding: 3rem 2rem; }
     </div>
   </div>
 </section>
+
+<div class="caen-wrap"><a class="caen-card" href="/actualizare-coduri-caen.html">
+  <div class="caen-date"><span>termen limită</span><b>25.03.2027</b></div>
+  <div class="caen-body"><div class="caen-title">Actualizarea codurilor CAEN</div><p><span class="d-full">Firma ta trebuie trecută la noua clasificare CAEN Rev. 3. Depune cererea din timp, cât Registrul Comerțului nu e încă aglomerat de ultima zi.</span><span class="d-short">Treci firma la CAEN Rev. 3 din timp, înainte de aglomerația de la final.</span></p></div>
+  <span class="caen-btn">Vezi cum procedăm →</span>
+</a></div>
+
 
 <div class="trust-strip">
   <div class="trust-strip-inner">
@@ -641,11 +677,12 @@ footer { padding: 3rem 2rem; }
         <div class="hero-divider-dot"></div>
         <div class="hero-divider-line"></div>
       </div>
-      <p class="hero-tagline">Szakértelem és támogatás minden lépésnél. Tanácsadás és cégbírósági ügyintézés, románul és magyarul.</p>
+      <p class="hero-tagline"><span class="tag-hl">Szakértelem és támogatás minden lépésnél.</span><br>Tanácsadás és cégbírósági ügyintézés, románul és magyarul.</p>
       <div class="hero-pills">
         <a href="#cegalapitas-ev" onclick="openServiceDetail('cegalapitas-ev');return false;" class="hero-pill">Cégalapítás</a>
         <a href="#onrc-bejegyzes-ev" onclick="openServiceDetail('onrc-bejegyzes-ev');return false;" class="hero-pill">ONRC módosítások</a>
         <a href="#adobevallas" onclick="openServiceDetail('adobevallas');return false;" class="hero-pill">Egységes Nyilatkozat</a>
+        <a href="/caen-kodok-frissitese.html" class="hero-pill hero-pill-caen">CAEN frissítés</a>
         <a href="#tanacsadas" onclick="openServiceDetail('tanacsadas');return false;" class="hero-pill">Tanácsadás</a>
       </div>
       <div class="hero-ctas">
@@ -666,6 +703,13 @@ footer { padding: 3rem 2rem; }
     </div>
   </div>
 </section>
+
+<div class="caen-wrap"><a class="caen-card" href="/caen-kodok-frissitese.html">
+  <div class="caen-date"><span>határidő</span><b>2027.03.25.</b></div>
+  <div class="caen-body"><div class="caen-title">A CAEN-kódok frissítése</div><p><span class="d-full">A cég tevékenységi kódjait át kell állítani az új CAEN Rev. 3 osztályozásra. Nyújtsa be a kérelmet időben, amíg a Cégbíróságot nem terheli le az utolsó nap.</span><span class="d-short">Állítsa át a kódokat a CAEN Rev. 3-ra időben, a végső tömeg előtt.</span></p></div>
+  <span class="caen-btn">Így intézem →</span>
+</a></div>
+
 <section class="about" id="rolam">
   <div class="about-dots"></div>
   <div class="about-inner">
@@ -816,6 +860,13 @@ footer { padding: 3rem 2rem; }
         <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
         <div class="service-name">Declarație Unică</div>
         <p class="service-desc">Asist persoanele fizice în completarea și depunerea Declarației Unice privind impozitul pe venit și contribuțiile sociale.</p>
+        <span class="service-more">Detalii →</span>
+      </div>
+      <div class="service-card service-card-clickable" onclick="location.href='/actualizare-coduri-caen.html'" tabindex="0" role="link">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h10M4 17h7"/><polyline points="16 15 18 17 22 13"/></svg></div>
+        <span class="svc-badge">Termen: 25 martie 2027</span>
+        <div class="service-name">Actualizare coduri CAEN</div>
+        <p class="service-desc">Aduc codurile de activitate ale firmei la noua clasificare CAEN Rev. 3. Termen prelungit până la 25 martie 2027.</p>
         <span class="service-more">Detalii →</span>
       </div>
     </div>
@@ -1094,6 +1145,13 @@ footer { padding: 3rem 2rem; }
         <p class="service-desc">Segítek a magánszemélyeknek a jövedelemadóról és társadalombiztosítási járulékokról szóló Egységes Nyilatkozat kitöltésében és benyújtásában.</p>
         <span class="service-more">Részletek →</span>
       </div>
+      <div class="service-card service-card-clickable" onclick="location.href='/caen-kodok-frissitese.html'" tabindex="0" role="link">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h10M4 17h7"/><polyline points="16 15 18 17 22 13"/></svg></div>
+        <span class="svc-badge">Határidő: 2027. március 25.</span>
+        <div class="service-name">CAEN-kódok frissítése</div>
+        <p class="service-desc">A cég tevékenységi kódjait az új CAEN Rev. 3 osztályozáshoz igazítom. A határidő 2027. március 25-ig meghosszabbítva.</p>
+        <span class="service-more">Részletek →</span>
+      </div>
     </div>
     <div class="service-detail-view" id="detail-cegalapitas-ev">
       <button class="article-back-btn" onclick="closeServiceDetail()">← Vissza a szolgáltatásokhoz</button>
@@ -1343,7 +1401,11 @@ footer { padding: 3rem 2rem; }
     <h3 class="pricing-group-title">Alte servicii</h3>
     <div class="pricing-grid">
       <div class="price-card">
-        <div class="price-card-top"><div class="price-name">Consultanță de specialitate</div><div class="price-value">150 lei/oră</div></div>
+        <div class="price-card-top"><div class="price-name">Actualizare coduri CAEN</div><div class="price-value">de la 350 lei</div></div>
+        <p class="price-desc">PFA / Î.I. / Î.F. de la 350 lei, SRL de la 550 lei (+ taxe Registrul Comerțului). Alte operațiuni se taxează separat.</p>
+      </div>
+      <div class="price-card">
+        <div class="price-card-top"><div class="price-name">Consultanță de specialitate</div><div class="price-value">de la 200 lei</div></div>
         <p class="price-desc">Consiliere personalizată pentru alegerea formei juridice, restructurări și orice aspecte legate de activitatea firmei.</p>
       </div>
       <div class="price-card">
@@ -1430,7 +1492,11 @@ footer { padding: 3rem 2rem; }
     <h3 class="pricing-group-title">Egyéb szolgáltatások</h3>
     <div class="pricing-grid">
       <div class="price-card">
-        <div class="price-card-top"><div class="price-name">Szakmai tanácsadás</div><div class="price-value">150 lej/óra</div></div>
+        <div class="price-card-top"><div class="price-name">CAEN-kódok frissítése</div><div class="price-value">350 lejtől</div></div>
+        <p class="price-desc">EV / Î.I. / Î.F. 350 lejtől, Kft. 550 lejtől (+ cégbírósági illetékek). Más műveletek külön díjazandók.</p>
+      </div>
+      <div class="price-card">
+        <div class="price-card-top"><div class="price-name">Szakmai tanácsadás</div><div class="price-value">200 lejtől</div></div>
         <p class="price-desc">Személyre szabott tanácsadás a jogi forma megválasztásához, átszervezésekhez és a cég működésével kapcsolatos kérdésekhez.</p>
       </div>
       <div class="price-card">
@@ -1534,6 +1600,7 @@ footer { padding: 3rem 2rem; }
         </div>
         <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
           <a href="#contact" class="hero-cta" onclick="navigateTo('home','contact')">Solicită consultanță</a>
+          <a href="/actualizare-coduri-caen.html" class="hero-cta" style="background:transparent;color:var(--navy);border:2px solid var(--navy)">Vezi pagina completă →</a>
         </div>
         <div class="news-alert-langs">Servicii disponibile în limba română și maghiară.</div>
       </div>
@@ -1636,6 +1703,7 @@ footer { padding: 3rem 2rem; }
         </div>
         <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
           <a href="#kapcsolat" class="hero-cta" onclick="navigateTo('home','kapcsolat')">Tanácsadást kérek</a>
+          <a href="/caen-kodok-frissitese.html" class="hero-cta" style="background:transparent;color:var(--navy);border:2px solid var(--navy)">Teljes oldal megtekintése →</a>
         </div>
         <div class="news-alert-langs">Szolgáltatások románul és magyarul is elérhetők.</div>
       </div>
