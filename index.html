@@ -491,7 +491,13 @@ footer { padding: 3rem 2rem; }
 .caen-card{padding:12px 14px;gap:8px}
 .caen-date{padding:2px 10px}.caen-date b{font-size:12px}.caen-date span{font-size:10px}
 .caen-title{font-size:15px}.caen-body p{font-size:12.5px;line-height:1.4}
-.caen-btn{font-size:13px;padding:9px 14px}}</style><style>.caen-date span{display:block;margin-bottom:3px}@media(max-width:768px){.caen-date span{display:inline;margin-bottom:0}}</style></head>
+.caen-btn{font-size:13px;padding:9px 14px}}</style><style>.caen-date span{display:block;margin-bottom:3px}@media(max-width:768px){.caen-date span{display:inline;margin-bottom:0}}</style><style>.svc-feature{display:block;text-decoration:none;background:var(--navy);color:#fff;border-radius:16px;padding:22px 26px;margin:0 0 26px;border-left:6px solid var(--gold);box-shadow:0 14px 34px rgba(8,26,53,.18);transition:transform .2s}
+.svc-feature:hover{transform:translateY(-3px)}
+.svc-feature-badge{display:inline-block;background:var(--gold);color:var(--navy-dark);font-weight:700;font-size:12.5px;padding:3px 12px;border-radius:20px;letter-spacing:.2px}
+.svc-feature-name{font-family:var(--font-display);font-size:24px;font-weight:700;margin:10px 0 6px;color:#fff}
+.svc-feature p{margin:0 0 14px;max-width:640px;color:rgba(255,255,255,.85);line-height:1.55;font-size:15px}
+.svc-feature-btn{display:inline-block;background:var(--gold);color:var(--navy-dark);font-weight:700;font-size:14.5px;padding:10px 20px;border-radius:10px}
+@media(max-width:768px){.svc-feature{padding:16px 18px;margin-bottom:20px}.svc-feature-name{font-size:19px}.svc-feature p{font-size:13.5px}.svc-feature-btn{font-size:13.5px;padding:9px 16px}.svc-feature-badge{font-size:11.5px}}</style></head>
 <body>
 <body>
 
@@ -769,7 +775,7 @@ footer { padding: 3rem 2rem; }
 <footer>
   <div class="footer-inner">
     <div class="footer-logo">GÁL S. <span>NORBERT</span> Î.I.</div>
-    <div class="footer-sub">CUI 50166396 · RC F2024000210315 · gsnii.ro</div><div class="footer-sub" style="margin-top:8px"><a href="/cegalapitas-szilagy.html" style="color:inherit">Cégalapítás Szilágy megyében</a> · <a href="/ev-alapitas-szilagy.html" style="color:inherit">EV Szilágy</a> · <a href="/kft-alapitas-szilagy.html" style="color:inherit">Kft. Szilágy</a> · <a href="/ev-alapitas-online.html" style="color:inherit">EV online</a> · <a href="/kft-alapitas-online.html" style="color:inherit">Kft. online</a> · <a href="/caen-kodok-frissitese.html" style="color:inherit">CAEN frissítés</a></div>
+    <div class="footer-sub">CUI 50166396 · RC F2024000210315 · gsnii.ro</div><div class="footer-sub" style="margin-top:8px"><a href="/cegalapitas-szilagy.html" style="color:inherit">Cégalapítás Szilágy megyében</a> · <a href="/ev-alapitas-szilagy.html" style="color:inherit">EV (PFA) Szilágy</a> · <a href="/kft-alapitas-szilagy.html" style="color:inherit">Kft. (SRL) Szilágy</a> · <a href="/ev-alapitas-online.html" style="color:inherit">EV (PFA) online</a> · <a href="/kft-alapitas-online.html" style="color:inherit">Kft. (SRL) online</a> · <a href="/caen-kodok-frissitese.html" style="color:inherit">CAEN frissítés</a></div>
     <ul class="footer-links">
       <li><a href="#szolgaltatasok">Szolgáltatások</a></li>
       <li><a href="#arak">Árak</a></li>
@@ -792,7 +798,13 @@ footer { padding: 3rem 2rem; }
     <div class="section-label">CE OFER</div>
     <h2 class="section-title">Servicii profesionale</h2>
     <p class="section-subtitle">Consultanță și operațiuni la Registrul Comerțului</p>
-    <h3 class="pricing-group-title">PFA / Î.I. / Î.F.</h3>
+        <a class="svc-feature" href="/actualizare-coduri-caen.html">
+      <div class="svc-feature-top"><span class="svc-feature-badge">Important · termen limită 25.03.2027</span></div>
+      <div class="svc-feature-name">Actualizare coduri CAEN</div>
+      <p>Aduc codurile de activitate ale firmei la noua clasificare CAEN Rev. 3. Depune cererea din timp, înainte de aglomerația de la final.</p>
+      <span class="svc-feature-btn">Vezi detalii și preț →</span>
+    </a>
+<h3 class="pricing-group-title">PFA / Î.I. / Î.F.</h3>
     <div class="services-grid">
       <div class="service-card service-card-clickable" id="infiintare-pfa" onclick="openServiceDetail('infiintare-pfa')" tabindex="0" role="button">
         <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
@@ -860,13 +872,6 @@ footer { padding: 3rem 2rem; }
         <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
         <div class="service-name">Declarație Unică</div>
         <p class="service-desc">Asist persoanele fizice în completarea și depunerea Declarației Unice privind impozitul pe venit și contribuțiile sociale.</p>
-        <span class="service-more">Detalii →</span>
-      </div>
-      <div class="service-card service-card-clickable" onclick="location.href='/actualizare-coduri-caen.html'" tabindex="0" role="link">
-        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h10M4 17h7"/><polyline points="16 15 18 17 22 13"/></svg></div>
-        <span class="svc-badge">Termen: 25 martie 2027</span>
-        <div class="service-name">Actualizare coduri CAEN</div>
-        <p class="service-desc">Aduc codurile de activitate ale firmei la noua clasificare CAEN Rev. 3. Termen prelungit până la 25 martie 2027.</p>
         <span class="service-more">Detalii →</span>
       </div>
     </div>
@@ -1075,7 +1080,13 @@ footer { padding: 3rem 2rem; }
     <div class="section-label">AMIT KÍNÁLOK</div>
     <h2 class="section-title">Professzionális szolgáltatások</h2>
     <p class="section-subtitle">Tanácsadás és Cégnyilvántartási műveletek</p>
-    <h3 class="pricing-group-title">EV / Î.I. / Î.F.</h3>
+        <a class="svc-feature" href="/caen-kodok-frissitese.html">
+      <div class="svc-feature-top"><span class="svc-feature-badge">Fontos · határidő 2027.03.25.</span></div>
+      <div class="svc-feature-name">CAEN-kódok frissítése</div>
+      <p>A cég tevékenységi kódjait az új CAEN Rev. 3 osztályozáshoz igazítom. Nyújtsa be a kérelmet időben, a végső tömeg előtt.</p>
+      <span class="svc-feature-btn">Részletek és ár →</span>
+    </a>
+<h3 class="pricing-group-title">EV / Î.I. / Î.F.</h3>
     <div class="services-grid">
       <div class="service-card service-card-clickable" id="cegalapitas-ev" onclick="openServiceDetail('cegalapitas-ev')" tabindex="0" role="button">
         <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
@@ -1143,13 +1154,6 @@ footer { padding: 3rem 2rem; }
         <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
         <div class="service-name">Adóbevallás</div>
         <p class="service-desc">Segítek a magánszemélyeknek a jövedelemadóról és társadalombiztosítási járulékokról szóló Egységes Nyilatkozat kitöltésében és benyújtásában.</p>
-        <span class="service-more">Részletek →</span>
-      </div>
-      <div class="service-card service-card-clickable" onclick="location.href='/caen-kodok-frissitese.html'" tabindex="0" role="link">
-        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h10M4 17h7"/><polyline points="16 15 18 17 22 13"/></svg></div>
-        <span class="svc-badge">Határidő: 2027. március 25.</span>
-        <div class="service-name">CAEN-kódok frissítése</div>
-        <p class="service-desc">A cég tevékenységi kódjait az új CAEN Rev. 3 osztályozáshoz igazítom. A határidő 2027. március 25-ig meghosszabbítva.</p>
         <span class="service-more">Részletek →</span>
       </div>
     </div>
